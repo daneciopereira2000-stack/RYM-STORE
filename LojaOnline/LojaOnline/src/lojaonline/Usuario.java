@@ -13,6 +13,8 @@ public class Usuario {
 
     
     private String nome, email, senha;
+    private int id;
+    private boolean  status;
 
     public String getNome() {
         return nome;
@@ -38,6 +40,20 @@ public class Usuario {
         this.senha = senha;
     }
     
-     
     
+    public void setstatus(boolean status){
+    this.status = status;
+    }
+    
+    public boolean getstatus(){
+        return this.status;
+    }
+    
+    public void setid(int id){
+        this.id = id;
+    }
+    
+    public int getid(){
+        return this.id;
+    }
 }

@@ -14,7 +14,7 @@ public class Loja {
    
    private ArrayList<Produto> produtos =  new ArrayList<>();
    private ArrayList<Clientes> clientes =  new ArrayList<>();
-   private ArrayList<Admin> adm=  new ArrayList<>();
+   private ArrayList<Admin> adm =  new ArrayList<>();
 
     public ArrayList<Admin> getAdm() {
         return adm;
@@ -26,9 +26,6 @@ public class Loja {
 
    
     
-
-   
-   
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }

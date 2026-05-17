@@ -5,6 +5,8 @@
 package lojaonline;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -25,6 +27,14 @@ public class LojaOnline {
         Clientes clientes = new Clientes();
         Loja loja = new Loja();
         Admin admin= new Admin();
+        int id =0;
+        boolean status = true;
+        
+         Pattern pattern = Pattern.compile("@gmail\\.com$");
+          Matcher match;
+         
+        
+        
         
         
         
@@ -76,7 +86,7 @@ public class LojaOnline {
                 }
                 
                 if(!ativo){
-                    System.out.println("         Oooops, dados incorrectos, tente novamente !");}
+                    System.out.println(" Oooops, dados incorrectos, tente novamente !");}
                
                
                 
@@ -104,9 +114,24 @@ public class LojaOnline {
                 
                 System.out.print("DIGITE O SEU MELHOR EMAIL: ");
                 String email=leia.nextLine();
-           
+                
+               
+                match = pattern.matcher(email);
+                
+                while(match.find() != true){
+                    System.out.println("email invalido");
+                    System.out.print("Digite novamente: ");
+                    email=leia.nextLine();
+                    
+                    match = pattern.matcher(email);
+                }
+                    
+     
+                
                 System.out.print("DIGITE A SUA SENHA ");
                 String senha=leia.nextLine();
+                
+                id++;
                 
                 /* verificar o formato de email*/
                 System.out.println("\nParabens e seja Bem Vindo "+nome+", use os seus dados para efectuar o login e finalizar as suas compras.\n");
@@ -116,6 +141,10 @@ public class LojaOnline {
                 clientes.setNome(nome);
                 clientes.setEmail(email);
                 clientes.setSenha(senha);
+                clientes.setstatus(status);
+                clientes.setid(id);
+                
+                        
                 
                 /* adicionei os cleintes a nossa loja passando como parametro o ojbeto completo de */
                 /*modos a nao perder os dados */
