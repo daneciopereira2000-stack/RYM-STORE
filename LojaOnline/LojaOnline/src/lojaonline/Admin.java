@@ -37,7 +37,7 @@ public class Admin extends Usuario{
         System.out.println(" [ 0 ]- Sair ");
         System.out.print("                 Sua resposta: ");
         opcao= leia.nextInt();
-        leia.nextLine();
+        
             
         
         
@@ -108,6 +108,7 @@ public class Admin extends Usuario{
                     System.out.println("***********************ADMIN ACTIVOS*****************************\n");
                 for( Admin adm: loja.getAdm() ){
                     System.out.println("*****************************************************************");
+                 /*   System.out.println("ID: "+adm.getid());*/
                     System.out.println("Nome: "+adm.getNome());
                     System.out.println("Email: "+adm.getEmail());
                     System.out.println("Senha: "+adm.getSenha());
@@ -118,6 +119,7 @@ public class Admin extends Usuario{
                 
                 for( Clientes cliente: loja.getClientes() ){
                     System.out.println("*****************************************************************");
+                   /* System.out.println("ID: "+cliente.getid());*/
                     System.out.println("Nome "+cliente.getNome());
                     System.out.println("Email: "+cliente.getEmail());
                     System.out.println("Senha"+cliente.getSenha());
@@ -129,30 +131,194 @@ public class Admin extends Usuario{
                     System.out.print("                                 Sua resposta: ");
                         
                     int op=leia.nextInt();
+                    leia.nextLine();
+                        if(op==1){
+                            admin.menuadmin(usuario, loja, admin, clientes);
+                        }
+                
+                
+                    
+            }
+            
+            
+            case 6 ->{
+                
+                  leia.nextLine();
+                  System.out.println("\n*************** Actualizar dados de Usuarios ********************************");
+                  System.out.print(" Digite o nome do usuario a ser actualizado ");
+                  System.out.print("                                             Sua resposta: ");
+                  String antigo=leia.nextLine();
+                  boolean existe= false;
+                  
+                  
+                  for( Clientes cliente: loja.getClientes() ){
+                      if((cliente.getNome().equalsIgnoreCase(antigo)) || (cliente.getEmail().equalsIgnoreCase(antigo) )){
+                  
+                          System.out.print(" NOVO NOME: ");
+                          String novonome= leia.nextLine();
+                          System.out.print(" NOVO EMAIL: ");
+                          String novoemail= leia.nextLine();
+                          System.out.print(" NOVA SENHA: ");
+                          String novosenha=leia.nextLine();
+                          
+                          cliente.setEmail(novoemail);
+                          cliente.setNome(novonome);
+                          cliente.setSenha(novosenha);
+                            existe=true;
+                            
+                          System.out.println(" Dados actualizados com sucesso, use os novos dados para logar no sistema !");
+                          
+                      }
+                      if(!existe){
+                      System.out.println("              Oooopss usuario nao encontrado, verifique e tente novamente !");
+                      }
+                      
+                     
+                
+                
+                System.out.println("\n [ 1 ]- Voltar ao MENU ADMIN");
+                    System.out.print("                                 Sua resposta: ");
+                        
+                    int op=leia.nextInt();
+                    leia.nextLine();
+                        if(op==1){
+                            admin.menuadmin(usuario, loja, admin, clientes);
+                        }
+                      
+                      
+                  }
+                  
+                  for( Admin actadmin: loja.getAdm()){
+                      
+                      if( (actadmin.getEmail().equalsIgnoreCase(antigo)) || (actadmin.getNome().equalsIgnoreCase(antigo)) ) {
+                          
+                          System.out.print(" NOVO NOME: ");
+                          String novonome= leia.nextLine();
+                          System.out.print(" NOVO EMAIL: ");
+                          String novoemail= leia.nextLine();
+                          System.out.print(" NOVA SENHA: ");
+                          String novosenha=leia.nextLine();
+                          
+                          actadmin.setEmail(novoemail);
+                          actadmin.setNome(novonome);
+                          actadmin.setSenha(novosenha);
+                            existe=true;
+                            
+                          System.out.println(" Dados actualizados com sucesso, use os novos dados para logar no sistema !");
+                          
+                      }
+                      
+                      if(!existe){
+                      System.out.println("              Oooopss usuario nao encontrado, verifique e tente novamente !");
+                      }
+                      
+                 
+                
+                 
+                 
+                System.out.println("\n [ 1 ]- Voltar ao MENU ADMIN");
+                System.out.print("                                 Sua resposta: ");
+                int op=leia.nextInt();
+                leia.nextLine();
+                
+                        if(op==1){
+                            admin.menuadmin(usuario, loja, admin, clientes);
+                        }
+                        
+                        
+                        
+                        
+                      }
+                  }
+                  
+         
+             case 8 ->{
+                 
+                 leia.nextLine();
+                
+                  System.out.println("\n*************** Remover Usuarios ********************************");
+                  
+                  System.out.println("\n***********************ADMIN ACTIVOS*****************************\n");
+                for( Admin adm: loja.getAdm() ){
+                    System.out.println("*****************************************************************");
+                   /* System.out.println("ID: "+adm.getid());*/
+                    System.out.println("Nome: "+adm.getNome());
+                    System.out.println("Email: "+adm.getEmail());
+                    System.out.println("*****************************************************************");
+                }
+            
+                    System.out.println("**********************CLIENTES ACTIVOS***************************\n");
+                
+                for( Clientes cliente: loja.getClientes() ){
+                   
+                    System.out.println("*****************************************************************");
+                  /*  System.out.println("ID: "+cliente.getid());*/
+                    System.out.println("Nome "+cliente.getNome());
+                    System.out.println("Email: "+cliente.getEmail());
+                   
+                    System.out.println("*****************************************************************");
+                }
+                System.out.println("\n Veja quais usuarios pretende remover do sistema, digite o NOME ou EMAIL para remover !");
+                System.out.print("                                                                                             Sua resposta: ");
+                String rem= leia.nextLine();
+                    
+                Clientes removerclientes=null;
+                Admin removeradmin=null;
+                
+                
+                for( Clientes clt: loja.getClientes()){
+                    
+                    if((clt.getNome().equalsIgnoreCase(rem)) || (clt.getEmail().equalsIgnoreCase(rem) )){
+                    removerclientes= clt;
+                    
+                    }
+                }
+                
+                
+                
+                for( Admin admremover: loja.getAdm()){
+                    
+                    if((admremover.getNome().equalsIgnoreCase(rem)) || (admremover.getEmail().equalsIgnoreCase(rem) )){
+                    removeradmin= admremover;
+                    
+                    }
+                }
+
+                
+                if(removerclientes!=null  || removeradmin!=null){
+                    loja.getClientes().remove(removerclientes);
+                    loja.getAdm().remove(removeradmin);
+                    
+                    System.out.println("               Usuario removido com sucesso...");
+                }else
+                     System.out.println("              Oooopss usuario nao encontrado, verifique e tente novamente !");
+                
+                
+                
+                System.out.println("\n [ 1 ]- Voltar ao MENU ADMIN");
+                    System.out.print("                                 Sua resposta: ");
+                        
+                    int op=leia.nextInt();
+                    leia.nextLine();
                         if(op==1){
                             admin.menuadmin(usuario, loja, admin, clientes);
                         }
                 
                 
                 
-                /*System.out.println(" [ 1 ]- Ver ADMIN ");
-                System.out.println(" [ 2 ]- Ver CLIENTE ");
-                System.out.print("                      Sua resposta: ");
                 
-                    int op=leia.nextInt();
-                    leia.nextLine();*/
-                    
-                    
-                    
             }
             
             case 9 ->{
                return;
+          
             }
             
             case 0 ->{
-                return ;
+               
             }
+            
+            
             
         }
          
