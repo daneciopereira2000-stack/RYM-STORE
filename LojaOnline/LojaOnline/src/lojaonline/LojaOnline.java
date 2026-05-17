@@ -28,7 +28,7 @@ public class LojaOnline {
         Loja loja = new Loja();
         Admin admin= new Admin();
         int id =0;
-        boolean status = true;
+        
         
          Pattern pattern = Pattern.compile("@gmail\\.com$");
           Matcher match;
@@ -141,7 +141,6 @@ public class LojaOnline {
                 clientes.setNome(nome);
                 clientes.setEmail(email);
                 clientes.setSenha(senha);
-                clientes.setstatus(status);
                 clientes.setid(id);
                 
                         
@@ -165,13 +164,8 @@ public class LojaOnline {
             case 0 ->{
                 return;
             }
-        
-                
-            
-                
-           
-                
-        }
+         }
+         
         
         }while(opcao!=0);
         
