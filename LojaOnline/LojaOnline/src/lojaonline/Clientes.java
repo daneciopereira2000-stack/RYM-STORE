@@ -52,7 +52,7 @@ public class Clientes extends Usuario {
         System.out.println(" [ 5 ]- Ver o meu carrinho ");
         System.out.println(" [ 6 ]- Voltar ao MENU PRINCIPAL ");
         System.out.println(" [ 0 ]- Logout  ");
-        System.out.print("                 Sua resposta: ");
+        System.out.print("                                      Sua resposta: ");
         
         opcao=leia.nextInt();
         
