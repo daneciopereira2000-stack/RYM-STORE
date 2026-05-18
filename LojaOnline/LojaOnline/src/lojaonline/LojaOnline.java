@@ -7,7 +7,7 @@ package lojaonline;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.io.Console;
 /**
  *
  * @author MM
@@ -21,7 +21,7 @@ public class LojaOnline {
         // TODO code application logic here
         Scanner leia= new Scanner(System.in);
         int opcao;
-        
+        Console console = System.console();
         Usuario usuario= new  Usuario();
         Produto produto= new  Produto();
         Clientes clientes = new Clientes();
@@ -50,6 +50,10 @@ public class LojaOnline {
         opcao= leia.nextInt();
         leia.nextLine();
         
+         if (console == null) {
+            System.out.println("Console não disponível. Execute este programa direto pelo terminal/prompt.");
+            return;
+        }
         
          switch(opcao){
             case 1 -> {
@@ -60,10 +64,12 @@ public class LojaOnline {
                 String email = leia.nextLine();
                 
                 System.out.print("DIGITE A SENHA: ");
-                String senha=leia.nextLine();
+                char[] senha= console.readPassword();
+                String Senha = new String(senha); 
+                // String senha=leia.nextLine();
               
                 usuario.setEmail(email);
-                usuario.setSenha(senha);
+                usuario.setSenha(Senha);
               
                 if("admin@gmail.com".equals(usuario.getEmail()) && "1234".equals(usuario.getSenha())){
                     ativo = true;
