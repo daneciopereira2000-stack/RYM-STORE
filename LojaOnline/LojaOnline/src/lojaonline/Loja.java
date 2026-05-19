@@ -4,7 +4,6 @@
  */
 package lojaonline;
 import java.util.ArrayList;
-import java.util.ArrayList;
 
 /**
  *
