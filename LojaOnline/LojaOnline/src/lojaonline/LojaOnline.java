@@ -7,21 +7,25 @@ package lojaonline;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.Console;
+
 /**
  *
  * @author MM
  */
-public class LojaOnline {
 
+
+
+public class LojaOnline {
+    
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner leia= new Scanner(System.in);
         int opcao;
-        Console console = System.console();
+        
         Usuario usuario= new  Usuario();
         Produto produto= new  Produto();
         Clientes clientes = new Clientes();
@@ -29,51 +33,48 @@ public class LojaOnline {
         Admin admin= new Admin();
         int id =0;
         
+       
         
          Pattern pattern = Pattern.compile("@gmail\\.com$");
-          Matcher match;
+         Matcher match;
          
-        
-        
-        
-        
-        
         do{
-       
-        System.out.println("***************[MENU PRINCIPAL]******************");
-       
+            
+        
+        System.out.println("Super Admin: ");
+        System.out.println("Email: admin@gmail.com ");
+        System.out.println("Senha: 1234 ");
+        
+        System.out.println("***************[MENU PRINCIPAL]******************"); 
+            
         System.out.println(" [ 1 ]- Login ");
         System.out.println(" [ 2 ]- Cadastrar-me ");
         System.out.println(" [ 3 ]- Ver produtos");
         System.out.println(" [ 0 ]- Sair   ");
-        System.out.print("                 Sua resposta: ");
+        System.out.print("Sua resposta: ");
         opcao= leia.nextInt();
         leia.nextLine();
         
-         if (console == null) {
-            System.out.println("Console não disponível. Execute este programa direto pelo terminal/prompt.");
-            return;
-        }
         
          switch(opcao){
             case 1 -> {
                 
                 boolean ativo = false;
                 System.out.println("\n*************** LOGIN ***************************");
+                
                 System.out.print("DIGITE O EMAIL: ");
                 String email = leia.nextLine();
                 
+                
                 System.out.print("DIGITE A SENHA: ");
-                char[] senha= console.readPassword();
-                String Senha = new String(senha); 
-                // String senha=leia.nextLine();
-              
+                String senha=leia.nextLine();
+                
                 usuario.setEmail(email);
-                usuario.setSenha(Senha);
+                usuario.setSenha(senha);
               
                 if("admin@gmail.com".equals(usuario.getEmail()) && "1234".equals(usuario.getSenha())){
                     ativo = true;
-                    admin.menuadmin(usuario,loja, admin, clientes); /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
+                    admin.menuadmin(usuario,loja, admin, clientes,produto); /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
                 }
                 
                 for( Clientes cliente: loja.getClientes() ){
@@ -86,20 +87,13 @@ public class LojaOnline {
                 for(Admin administrador: loja.getAdm()){
                     
                     if(administrador.getEmail().equals(email) && administrador.getSenha().equals(senha) ){
-                        admin.menuadmin(usuario, loja, admin, clientes);
+                        admin.menuadmin(usuario, loja, admin, clientes,produto);
                     } 
                     
                 }
                 
                 if(!ativo){
                     System.out.println(" Oooops, dados incorrectos, tente novamente !");}
-               
-               
-                
-                
-                
-                
-                   
                     
             }
             
@@ -124,8 +118,10 @@ public class LojaOnline {
                
                 match = pattern.matcher(email);
                 
+                
                 while(match.find() != true){
                     System.out.println("email invalido");
+                    System.out.println("Exemplo:user@gmail.com"); 
                     System.out.print("Digite novamente: ");
                     email=leia.nextLine();
                     
@@ -163,7 +159,7 @@ public class LojaOnline {
             
             case 3 ->{
                 System.out.println("*************** VER PRODUTOS ******************");
-             
+                loja.visualizar_produto();
               
             }
             
