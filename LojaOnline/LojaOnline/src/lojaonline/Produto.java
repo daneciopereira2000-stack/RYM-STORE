@@ -10,7 +10,7 @@ package lojaonline;
  */
 public class Produto {
     private int id, estoque;
-    private String nomeproduto, categoriaproduto;
+    private String nomeproduto, categoriaproduto="Eletronico";
     private float precoproduto;
 
     public int getId() {
