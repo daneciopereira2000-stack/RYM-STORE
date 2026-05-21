@@ -44,10 +44,10 @@ public class Admin extends Usuario{
             case 1 ->{
                 
                 System.out.print("Digite o nome do produto");
-                String nome = leia.next();
+                String nome = leia.nextLine();
                 
                 System.out.println("Digite a categoria");
-                String categoria = leia.next();
+                String categoria = leia.nextLine();
                 
                 System.out.print("Digite a quantidade em estoque:");
                 int estoque = leia.nextInt();
@@ -197,7 +197,7 @@ public class Admin extends Usuario{
                 
                 
                 System.out.println("\n [ 1 ]- Voltar ao MENU ADMIN");
-                    System.out.print("                                 Sua resposta: ");
+                    System.out.print("Sua resposta: ");
                         
                     int op=leia.nextInt();
                     leia.nextLine();
@@ -322,10 +322,7 @@ public class Admin extends Usuario{
                         if(op==1){
                             admin.menuadmin(usuario, loja, admin, clientes,produto);
                         }
-                
-                
-                
-                
+               
             }
             
             case 9 ->{

@@ -20,6 +20,7 @@ public class LojaOnline {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner leia= new Scanner(System.in);
@@ -31,6 +32,7 @@ public class LojaOnline {
         Loja loja = new Loja();
         Admin admin= new Admin();
         int id =0;
+        
        
         
          Pattern pattern = Pattern.compile("@gmail\\.com$");
