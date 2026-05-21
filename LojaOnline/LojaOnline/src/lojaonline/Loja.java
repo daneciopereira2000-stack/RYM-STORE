@@ -64,9 +64,23 @@ public class Loja {
     }
 
         
-    // para adicionar um novo produto
+    // funcionalidades do produto
     public void adicionar_produto(Produto produto){
         produtos.add(produto);
+    }
+    
+    public void remover_produto(int id){
+        
+        for(int i = 0; i < produtos.size(); i++){
+                
+            Produto p = produtos.get(i);
+            if(p.getId() == id){
+                produtos.remove(p);
+                System.out.println("Remoção foi um sucesso");
+                return;
+            }
+        }
+        System.out.println("Produto não encontrado");
     }
         
    public void visualizar_produto(){
@@ -79,6 +93,32 @@ public class Loja {
         System.out.println("==========================================================================================================");
    }
     
+   public int procurar_produto(int id){
+       
+       for(Produto p:produtos){
+           if(p.getId() == id)
+               return 1;
+       
+       }
+       return 0;
+   }
+   
+   public void actualizar_produto(int id, String name, float preco, int qtd){
+       
+       for(Produto p: produtos){
+           if(p.getId()== id){
+               
+               p.setNomeproduto(name);
+               p.setPrecoproduto(preco);
+               p.setEstoque(qtd);
+               System.out.println("Actulização feita");
+               return;
+           }
+       
+       }
+       System.out.println("Produto não encontrado");
+   
+   }
    
    // funcionalidades do carrinho
     
