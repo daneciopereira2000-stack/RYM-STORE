@@ -54,8 +54,7 @@ public class Loja {
     
       public void adicionarAdmin( Admin admin){
        adm.add(admin);
-       
-        
+      
      }
     
         public ArrayList<Admin> obterAdm(){

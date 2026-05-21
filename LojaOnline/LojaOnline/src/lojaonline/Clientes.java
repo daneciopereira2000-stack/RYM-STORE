@@ -28,9 +28,6 @@ public class Clientes extends Usuario {
     }
     
     
-    
-    
-    
      public void menucliente(Clientes cliente){
          
         Scanner leia= new Scanner(System.in);
