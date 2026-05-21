@@ -68,13 +68,24 @@ public class Loja {
         
    public void visualizar_produto(){
         System.out.println("==========================================================================================================");
-        System.out.println("ID           | Nome                 | Categoria                 | Preço                 | Stock           ");
+        System.out.println("ID            | Nome                 | Categoria                 | Preço                 | Stock           ");
         System.out.println("==========================================================================================================");
         for(Produto p : produtos){           
-           System.out.println(p.getId()+"|"+p.getNomeproduto()+"|"+p.getCategoriaproduto()+"|"+p.getPrecoproduto()+"|"+p.getEstoque()  );
+           System.out.println(p.getId()+ "|"+p.getNomeproduto()+ "|"+p.getCategoriaproduto()+ "|" +p.getPrecoproduto()+ "|" +p.getEstoque()  );
        }
         System.out.println("==========================================================================================================");
    }
     
-    
+    public int id_usuario(ArrayList<Clientes> clientes){
+    int ultimo_id = 0;
+
+    for(Clientes cli : clientes){
+        ultimo_id = cli.getid();
+    }
+
+    return ultimo_id;
+}
+   
+   
+   
 }

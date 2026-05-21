@@ -11,6 +11,8 @@ import java.util.Scanner;
  *AS CLASSES ADMIN E CLIENTES VAO HERDAR DO USUARIO
  */
 
+
+
 public class Admin extends Usuario{
    
    public void menuadmin(Usuario usuario, Loja loja, Admin admin, Clientes clientes, Produto produto){  /*Passagem de objeto por parâmetro */
@@ -34,23 +36,18 @@ public class Admin extends Usuario{
         System.out.println(" [ 7 ]- Remover Produtos ");
         System.out.println(" [ 8 ]- Remover Usuariose ");
         System.out.println(" [ 9 ]- Voltar ao MENU PRINCIPAL");
-        System.out.println(" [ 0 ]- Sair ");
         System.out.print("Sua resposta: ");
         opcao= leia.nextInt();
-        
-            
-        
-        
         
          switch (opcao){
            
             case 1 ->{
                 
                 System.out.print("Digite o nome do produto");
-                String nome = leia.nextLine();
+                String nome = leia.next();
                 
                 System.out.println("Digite a categoria");
-                String categoria = leia.nextLine();
+                String categoria = leia.next();
                 
                 System.out.print("Digite a quantidade em estoque:");
                 int estoque = leia.nextInt();
@@ -115,19 +112,15 @@ public class Admin extends Usuario{
                 
                 /* adicionei os cleintes a nossa loja passando como parametro o ojbeto completo de */
                 /*modos a nao perder os dados */
-                loja.adicionarclientes(clientes);
-                
-                     
-                     
+                loja.adicionarclientes(clientes);         
                  }
             }
-            
-             case 3 ->{
-             
+            case 3 ->{
+              System.out.println("*************** VER PRODUTOS ******************");
               loja.visualizar_produto();
              
             }
-            
+   
             case 4 ->{
                 
                 System.out.println("\n*********VER USUARIOS ACTIVOS ");
@@ -339,12 +332,6 @@ public class Admin extends Usuario{
                return;
           
             }
-            
-            case 0 ->{
-               
-            }
-            
-            
             
         }
          

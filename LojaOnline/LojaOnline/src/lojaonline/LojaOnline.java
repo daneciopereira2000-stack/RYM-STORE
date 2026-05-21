@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
  */
 
 
+
 public class LojaOnline {
     
     /**
@@ -32,7 +33,7 @@ public class LojaOnline {
         int id =0;
        
         
-         Pattern pattern = Pattern.compile("^[a-z]+@gmail\\.com$");
+         Pattern pattern = Pattern.compile("@gmail\\.com$");
          Matcher match;
          
         do{
@@ -66,13 +67,12 @@ public class LojaOnline {
                 System.out.print("DIGITE A SENHA: ");
                 String senha=leia.nextLine();
                 
-                
                 usuario.setEmail(email);
                 usuario.setSenha(senha);
               
                 if("admin@gmail.com".equals(usuario.getEmail()) && "1234".equals(usuario.getSenha())){
                     ativo = true;
-                    admin.menuadmin(usuario,loja, admin, clientes, produto); /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
+                    admin.menuadmin(usuario,loja, admin, clientes,produto); /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
                 }
                 
                 for( Clientes cliente: loja.getClientes() ){
@@ -92,13 +92,6 @@ public class LojaOnline {
                 
                 if(!ativo){
                     System.out.println(" Oooops, dados incorrectos, tente novamente !");}
-               
-               
-                
-                
-                
-                
-                   
                     
             }
             
