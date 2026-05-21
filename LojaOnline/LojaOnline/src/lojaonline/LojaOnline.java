@@ -33,7 +33,7 @@ public class LojaOnline {
        
         
          Pattern pattern = Pattern.compile("^[a-z]+@gmail\\.com$");
-          Matcher match;
+         Matcher match;
          
         do{
             
@@ -164,7 +164,7 @@ public class LojaOnline {
             
             case 3 ->{
                 System.out.println("*************** VER PRODUTOS ******************");
-             
+                loja.visualizar_produto();
               
             }
             
