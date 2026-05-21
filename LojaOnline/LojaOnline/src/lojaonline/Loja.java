@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Loja {
    
-   private ArrayList<Produto> produtos =  new ArrayList<>();
+    ArrayList<Produto> produtos =  new ArrayList<>();
    private ArrayList<Clientes> clientes =  new ArrayList<>();
    private ArrayList<Admin> adm =  new ArrayList<>();
 
@@ -22,8 +22,6 @@ public class Loja {
     public void setAdm(ArrayList<Admin> adm) {
         this.adm = adm;
     }
-
-   
     
     public ArrayList<Produto> getProdutos() {
         return produtos;
@@ -42,8 +40,6 @@ public class Loja {
     }
     
     
-    
-    
     public void adicionarclientes( Clientes cliente){
        
         /*adiciona os clientes que foram setados /*
@@ -52,13 +48,8 @@ public class Loja {
         
      }
     
-        
     
-        
-        
       public void adicionarAdmin( Admin admin){
-       
-      
        adm.add(admin);
        
         
@@ -69,8 +60,21 @@ public class Loja {
         return adm;
     }
 
-    
-   
+        
+    // para adicionar um novo produto
+    public void adicionar_produto(Produto produto){
+        produtos.add(produto);
+    }
+        
+   public void visualizar_produto(){
+        System.out.println("==========================================================================================================");
+        System.out.println("ID           | Nome                 | Categoria                 | Preço                 | Stock           ");
+        System.out.println("==========================================================================================================");
+        for(Produto p : produtos){           
+           System.out.println(p.getId()+"|"+p.getNomeproduto()+"|"+p.getCategoriaproduto()+"|"+p.getPrecoproduto()+"|"+p.getEstoque()  );
+       }
+        System.out.println("==========================================================================================================");
+   }
     
     
 }

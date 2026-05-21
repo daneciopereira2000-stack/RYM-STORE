@@ -12,8 +12,10 @@ import java.util.regex.Pattern;
  *
  * @author MM
  */
-public class LojaOnline {
 
+
+public class LojaOnline {
+    
     /**
      * @param args the command line arguments
      */
@@ -28,25 +30,25 @@ public class LojaOnline {
         Loja loja = new Loja();
         Admin admin= new Admin();
         int id =0;
+       
         
-        
-         Pattern pattern = Pattern.compile("@gmail\\.com$");
+         Pattern pattern = Pattern.compile("^[a-z]+@gmail\\.com$");
           Matcher match;
          
-        
-        
-        
-        
-        
         do{
-       
-        System.out.println("***************[MENU PRINCIPAL]******************");
-       
+            
+        
+        System.out.println("Super Admin: ");
+        System.out.println("Email: admin@gmail.com ");
+        System.out.println("Senha: 1234 ");
+        
+        System.out.println("***************[MENU PRINCIPAL]******************"); 
+            
         System.out.println(" [ 1 ]- Login ");
         System.out.println(" [ 2 ]- Cadastrar-me ");
         System.out.println(" [ 3 ]- Ver produtos");
         System.out.println(" [ 0 ]- Sair   ");
-        System.out.print("                 Sua resposta: ");
+        System.out.print("Sua resposta: ");
         opcao= leia.nextInt();
         leia.nextLine();
         
@@ -60,23 +62,17 @@ public class LojaOnline {
                 System.out.print("DIGITE O EMAIL: ");
                 String email = leia.nextLine();
                 
+                
                 System.out.print("DIGITE A SENHA: ");
                 String senha=leia.nextLine();
                 
-                 match = pattern.matcher(email);
-                while(match.find() != true){
-                    System.out.println("email invalido");
-                    System.out.print("Digite novamente: ");
-                    email=leia.nextLine();
-                    
-                    match = pattern.matcher(email);
-                }
+                
                 usuario.setEmail(email);
                 usuario.setSenha(senha);
               
                 if("admin@gmail.com".equals(usuario.getEmail()) && "1234".equals(usuario.getSenha())){
                     ativo = true;
-                    admin.menuadmin(usuario,loja, admin, clientes); /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
+                    admin.menuadmin(usuario,loja, admin, clientes, produto); /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
                 }
                 
                 for( Clientes cliente: loja.getClientes() ){
@@ -89,7 +85,7 @@ public class LojaOnline {
                 for(Admin administrador: loja.getAdm()){
                     
                     if(administrador.getEmail().equals(email) && administrador.getSenha().equals(senha) ){
-                        admin.menuadmin(usuario, loja, admin, clientes);
+                        admin.menuadmin(usuario, loja, admin, clientes,produto);
                     } 
                     
                 }
@@ -127,8 +123,10 @@ public class LojaOnline {
                
                 match = pattern.matcher(email);
                 
+                
                 while(match.find() != true){
                     System.out.println("email invalido");
+                    System.out.println("Exemplo:user@gmail.com"); 
                     System.out.print("Digite novamente: ");
                     email=leia.nextLine();
                     

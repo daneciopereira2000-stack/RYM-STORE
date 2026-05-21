@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Admin extends Usuario{
    
-   public void menuadmin(Usuario usuario, Loja loja, Admin admin, Clientes clientes){  /*Passagem de objeto por parâmetro */
+   public void menuadmin(Usuario usuario, Loja loja, Admin admin, Clientes clientes, Produto produto){  /*Passagem de objeto por parâmetro */
        
         Scanner leia= new Scanner(System.in);
         
@@ -35,7 +35,7 @@ public class Admin extends Usuario{
         System.out.println(" [ 8 ]- Remover Usuariose ");
         System.out.println(" [ 9 ]- Voltar ao MENU PRINCIPAL");
         System.out.println(" [ 0 ]- Sair ");
-        System.out.print("                 Sua resposta: ");
+        System.out.print("Sua resposta: ");
         opcao= leia.nextInt();
         
             
@@ -44,6 +44,29 @@ public class Admin extends Usuario{
         
          switch (opcao){
            
+            case 1 ->{
+                
+                System.out.print("Digite o nome do produto");
+                String nome = leia.nextLine();
+                
+                System.out.println("Digite a categoria");
+                String categoria = leia.nextLine();
+                
+                System.out.print("Digite a quantidade em estoque:");
+                int estoque = leia.nextInt();
+            
+                System.out.print("Digite o preço:");
+                float preco = leia.nextFloat();
+                
+                produto.setNomeproduto(nome);
+                produto.setCategoriaproduto(categoria);
+                produto.setPrecoproduto(preco);
+                produto.setEstoque(estoque);
+                
+                loja.adicionar_produto(produto);
+                
+            }
+            
             case 2 ->{
                 System.out.println("\n*************** Novos Usuarios **************************");
                 System.out.println(" [ 1 ]- Novo ADMIN ");
@@ -99,7 +122,11 @@ public class Admin extends Usuario{
                  }
             }
             
-            
+             case 3 ->{
+             
+              loja.visualizar_produto();
+             
+            }
             
             case 4 ->{
                 
@@ -133,7 +160,7 @@ public class Admin extends Usuario{
                     int op=leia.nextInt();
                     leia.nextLine();
                         if(op==1){
-                            admin.menuadmin(usuario, loja, admin, clientes);
+                            admin.menuadmin(usuario, loja, admin, clientes,produto);
                         }
                 
                 
@@ -182,7 +209,7 @@ public class Admin extends Usuario{
                     int op=leia.nextInt();
                     leia.nextLine();
                         if(op==1){
-                            admin.menuadmin(usuario, loja, admin, clientes);
+                            admin.menuadmin(usuario, loja, admin, clientes,produto);
                         }
                       
                       
@@ -209,7 +236,7 @@ public class Admin extends Usuario{
                       }
                       
                       if(!existe){
-                      System.out.println("              Oooopss usuario nao encontrado, verifique e tente novamente !");
+                      System.out.println(" Oooopss usuario nao encontrado, verifique e tente novamente !");
                       }
                       
                  
@@ -217,12 +244,12 @@ public class Admin extends Usuario{
                  
                  
                 System.out.println("\n [ 1 ]- Voltar ao MENU ADMIN");
-                System.out.print("                                 Sua resposta: ");
+                System.out.print("Sua resposta:");
                 int op=leia.nextInt();
                 leia.nextLine();
                 
                         if(op==1){
-                            admin.menuadmin(usuario, loja, admin, clientes);
+                            admin.menuadmin(usuario, loja, admin, clientes,produto);
                         }
                         
                         
@@ -275,7 +302,6 @@ public class Admin extends Usuario{
                 }
                 
                 
-                
                 for( Admin admremover: loja.getAdm()){
                     
                     if((admremover.getNome().equalsIgnoreCase(rem)) || (admremover.getEmail().equalsIgnoreCase(rem) )){
@@ -289,19 +315,19 @@ public class Admin extends Usuario{
                     loja.getClientes().remove(removerclientes);
                     loja.getAdm().remove(removeradmin);
                     
-                    System.out.println("               Usuario removido com sucesso...");
+                    System.out.println(" Usuario removido com sucesso...");
                 }else
-                     System.out.println("              Oooopss usuario nao encontrado, verifique e tente novamente !");
+                     System.out.println(" Oooopss usuario nao encontrado, verifique e tente novamente !");
                 
                 
                 
                 System.out.println("\n [ 1 ]- Voltar ao MENU ADMIN");
-                    System.out.print("                                 Sua resposta: ");
+                    System.out.print("Sua resposta:   ");
                         
                     int op=leia.nextInt();
                     leia.nextLine();
                         if(op==1){
-                            admin.menuadmin(usuario, loja, admin, clientes);
+                            admin.menuadmin(usuario, loja, admin, clientes,produto);
                         }
                 
                 
@@ -328,11 +354,9 @@ public class Admin extends Usuario{
         
        
         
-        
-        
    }
 
   
-  
+ 
      
 }
