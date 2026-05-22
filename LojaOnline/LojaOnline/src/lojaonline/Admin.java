@@ -38,22 +38,26 @@ public class Admin extends Usuario{
         System.out.println(" [ 9 ]- Voltar ao MENU PRINCIPAL");
         System.out.print("Sua resposta: ");
         opcao= leia.nextInt();
+        leia.nextLine();
         
          switch (opcao){
            
             case 1 ->{
+
+                 System.out.println("\n*************** Novos Produtos **************************");
                 
-                System.out.print("Digite o nome do produto");
+                System.out.print("Digite o nome do produto: ");
                 String nome = leia.nextLine();
                 
-                System.out.println("Digite a categoria");
-                String categoria = leia.nextLine();
+                 String categoria="ELECTRONICOS";
+               
                 
-                System.out.print("Digite a quantidade em estoque:");
+                System.out.print("Digite a quantidade em estoque: ");
                 int estoque = leia.nextInt();
             
-                System.out.print("Digite o preço:");
+                System.out.print("Digite o preço: ");
                 float preco = leia.nextFloat();
+                leia.nextLine();
                 
                 produto.setNomeproduto(nome);
                 produto.setCategoriaproduto(categoria);
@@ -61,6 +65,8 @@ public class Admin extends Usuario{
                 produto.setEstoque(estoque);
                 
                 loja.adicionar_produto(produto);
+
+                System.out.println(" Sucesso, o seu produto foi adicionado com sucesso ao estoque !");
                 
             }
             

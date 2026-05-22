@@ -41,17 +41,13 @@ public class LojaOnline {
         do{
             
         
-        System.out.println("Super Admin: ");
-        System.out.println("Email: admin@gmail.com ");
-        System.out.println("Senha: 1234 ");
-        
         System.out.println("***************[MENU PRINCIPAL]******************"); 
             
         System.out.println(" [ 1 ]- Login ");
         System.out.println(" [ 2 ]- Cadastrar-me ");
         System.out.println(" [ 3 ]- Ver produtos");
         System.out.println(" [ 0 ]- Sair   ");
-        System.out.print("Sua resposta: ");
+        System.out.print("                              Sua resposta: ");
         opcao= leia.nextInt();
         leia.nextLine();
         
@@ -80,7 +76,7 @@ public class LojaOnline {
                 for( Clientes cliente: loja.getClientes() ){
                     if(cliente.getEmail().equals(email) && cliente.getSenha().equals(senha)){
                         ativo = true;
-                        clientes.menucliente(cliente);
+                        clientes.menucliente(cliente, loja);
                     }
                  }
                  

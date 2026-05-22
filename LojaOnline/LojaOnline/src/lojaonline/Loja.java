@@ -75,23 +75,48 @@ public class Loja {
             Produto p = produtos.get(i);
             if(p.getId() == id){
                 produtos.remove(p);
-                System.out.println("Remoção foi um sucesso");
+                System.out.println("Produto removido com sucesso !!");
                 return;
             }
         }
         System.out.println("Produto não encontrado");
     }
         
+
+
+
+
+
    public void visualizar_produto(){
-        System.out.println("==========================================================================================================");
-        System.out.println("ID    | Nome                 | Categoria                 | Preço                 | Stock           ");
-        System.out.println("==========================================================================================================");
-        for(Produto p : produtos){           
-           System.out.println(p.getId()+ "|"+p.getNomeproduto()+ "|"+p.getCategoriaproduto()+ "|" +p.getPrecoproduto()+ "|" +p.getEstoque()  );
-       }
-        System.out.println("==========================================================================================================");
-   }
-    
+
+    System.out.println("\n===================================== LISTA DE PRODUTOS =====================================");
+
+    System.out.printf("%-6s %-25s %-25s %-15s %-10s%n",
+            "ID",
+            "Nome",
+            "Categoria",
+            "Preço (AKZ)",
+            "Stock");
+
+    System.out.println("==============================================================================================");
+
+    for(Produto p : produtos){
+
+        System.out.printf("%-6d %-25s %-25s %-15.2f %-10d%n",
+                p.getId(),
+                p.getNomeproduto(),
+                p.getCategoriaproduto(),
+                p.getPrecoproduto(),
+                p.getEstoque());
+    }
+
+    System.out.println("==============================================================================================\n");
+} 
+
+
+
+   
+   
    public int procurar_produto(int id){
        
        for(Produto p:produtos){
@@ -110,7 +135,7 @@ public class Loja {
                p.setNomeproduto(name);
                p.setPrecoproduto(preco);
                p.setEstoque(qtd);
-               System.out.println("Actulização feita");
+               System.out.println(" Os dados do produto foram actualizados !!");
                return;
            }
        
@@ -121,34 +146,39 @@ public class Loja {
    
    // funcionalidades do carrinho
     
-    public void adicionar_no_carrinho(int qtd, int id){
+    public void adicionar_ao_carrinho(int qtd, int id){
         
         for (Produto p : produtos){
             if(id == p.getId()){
                 if(p.getEstoque() < qtd){
-                    System.out.println("ESTOQUE INSUFICIENTE!");
-                    System.out.println("Estoque:"+p.getEstoque());
-                    System.out.println("Quantidade pedida:"+qtd);
+
+
+                    System.out.println("Oooops, essa quantidade ultrapassa o nosso estoque !! ");
+                    System.out.println("ESTOQUE: "+p.getEstoque());
+                    System.out.println("QUANTIDADE PEDIDA: "+qtd);
                     return;
+                  
                 }
                 carrinho.add(p);
                 quantidade.add(qtd);
-                System.out.println("Produto adicionado no carrinho");
+                System.out.println(" O seu produto foi adicionado ao carrinho com sucesso !!");
                 return;
             }
         
         }
-        System.out.println("Produto não foi encontrado");
+        System.out.println("Oooops, este produto não foi encontrado");
        
     }
+
+
     
-    public void remover_no_carrinho(int id){
+    public void remover_do_carrinho(int id){
         
         for(int i=0; i<carrinho.size();i++){
             Produto p = carrinho.get(i);
             if(p.getId() == id){
                 carrinho.remove(p);
-                System.out.println("Remoção foi um succeso ");
+                System.out.println(" Produto removido com sucesso !! ");
             }
                 
         }
@@ -160,18 +190,36 @@ public class Loja {
         for(int i = 0; i< carrinho.size(); i++){
            Produto p = carrinho.get(i);
             int qtd = quantidade.get(i);
+           float  preco_final=0;
+
+            preco_final = preco_final + (p.getPrecoproduto() * qtd);
             
-            System.out.println("Produto: "+p.getNomeproduto());
-            System.out.println("Id:"+p.getId());
-            System.out.println("Preço:"+p.getPrecoproduto());
-            System.out.println("Quantidade: "+qtd);
+            System.out.println("PRODUTO: "+p.getNomeproduto());
+            System.out.println("ID:"+p.getId());
+            System.out.println("PRECO:"+p.getPrecoproduto());
+            System.out.println("QUANTIDADE: "+qtd);
+
+            System.out.println("*********************************************************************");
+            System.out.println("    TOTAL A PAGAR: "+preco_final+" AKZ");
+            System.out.println("*********************************************************************");
+
             
         }
         
     }
+
+
+
     
      public float finalizar_compra(){
         float preco_final =0;
+
+        if(carrinho.isEmpty()){
+
+        System.out.println("\nO seu carrinho está vazio.");
+        
+    }
+
         
         for (int i = 0; i< carrinho.size(); i++){
             Produto p = carrinho.get(i);
@@ -187,8 +235,15 @@ public class Loja {
             }
             preco_final = preco_final + (p.getPrecoproduto() * qtd);
         }
+
+            System.out.println("*********************************************************************");
+            System.out.println("    TOTAL A PAGAR: "+preco_final+" AKZ");
+            System.out.println("*********************************************************************");
+            System.out.println( " SUCESSO, AGRADECEMOS A SUA PREFERENCIA, VOLTE SEMPRE ! ");
       
         return preco_final;
         
     }
+
+
 }
