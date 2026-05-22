@@ -39,7 +39,8 @@ public class LojaOnline {
          Matcher match;
          
         do{
-            
+            System.out.println("");
+            System.out.println("");
         
         System.out.println("***************[MENU PRINCIPAL]******************"); 
             
@@ -146,11 +147,7 @@ public class LojaOnline {
                 /* adicionei os cleintes a nossa loja passando como parametro o ojbeto completo de */
                 /*modos a nao perder os dados */
                 loja.adicionarclientes(clientes);
-                
-             
-                
-                
-                
+               
             }
             
             case 3 ->{
@@ -168,17 +165,6 @@ public class LojaOnline {
         }while(opcao!=0);
         
        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-      
                
         
     }

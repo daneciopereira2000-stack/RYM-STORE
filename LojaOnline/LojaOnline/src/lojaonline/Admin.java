@@ -35,7 +35,7 @@ public class Admin extends Usuario{
         System.out.println(" [ 6 ]- Actualizar Usuarios");
         System.out.println(" [ 7 ]- Remover Produtos ");
         System.out.println(" [ 8 ]- Remover Usuariose ");
-        System.out.println(" [ 9 ]- Voltar ao MENU PRINCIPAL");
+        System.out.println(" [ 0 ]-  Logout");
         System.out.print("Sua resposta: ");
         opcao= leia.nextInt();
         leia.nextLine();
@@ -43,7 +43,9 @@ public class Admin extends Usuario{
          switch (opcao){
            
             case 1 ->{
-
+                
+                produto = new Produto();
+                
                  System.out.println("\n*************** Novos Produtos **************************");
                 
                 System.out.print("Digite o nome do produto: ");
@@ -71,6 +73,7 @@ public class Admin extends Usuario{
             }
             
             case 2 ->{
+                
                 System.out.println("\n*************** Novos Usuarios **************************");
                 System.out.println(" [ 1 ]- Novo ADMIN ");
                 System.out.println(" [ 2 ]- Novo CLIENTE ");
@@ -79,6 +82,8 @@ public class Admin extends Usuario{
                     int op=leia.nextInt();
                     leia.nextLine();
                         if(op==1){
+                            
+                admin = new Admin();
                 
                 System.out.println("\n*************** Novo ADMIN***************************");
                 System.out.print("DIGITE O SEU NOME: ");
@@ -100,7 +105,8 @@ public class Admin extends Usuario{
                 loja.adicionarAdmin(admin);
                 
                         } else if(op==2){
-                     
+                
+                clientes = new Clientes();             
                 System.out.println("\n*************** Novo CLIENTE**************************");
                 System.out.print("DIGITE O SEU NOME: ");
                 String nome= leia.nextLine();
@@ -137,6 +143,7 @@ public class Admin extends Usuario{
                  /*   System.out.println("ID: "+adm.getid());*/
                     System.out.println("Nome: "+adm.getNome());
                     System.out.println("Email: "+adm.getEmail());
+                    System.out.println("Id: "+adm.getid());
                     System.out.println("Senha: "+adm.getSenha());
                     System.out.println("*****************************************************************");
                 }
@@ -148,6 +155,7 @@ public class Admin extends Usuario{
                    /* System.out.println("ID: "+cliente.getid());*/
                     System.out.println("Nome "+cliente.getNome());
                     System.out.println("Email: "+cliente.getEmail());
+                    System.out.println("Id: "+cliente.getid());
                     System.out.println("Senha"+cliente.getSenha());
                     System.out.println("*****************************************************************");
                 }
@@ -168,6 +176,8 @@ public class Admin extends Usuario{
             
             
             case 6 ->{
+                
+                
                 
                   leia.nextLine();
                   System.out.println("\n*************** Actualizar dados de Usuarios ********************************");
@@ -328,18 +338,12 @@ public class Admin extends Usuario{
                         if(op==1){
                             admin.menuadmin(usuario, loja, admin, clientes,produto);
                         }
-               
             }
             
-            case 9 ->{
-               return;
-          
-            }
+        
             
         }
          
-         
-        
         }while(opcao!=0);
         
        

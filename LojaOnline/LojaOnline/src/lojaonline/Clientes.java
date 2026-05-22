@@ -4,7 +4,6 @@
  */
 package lojaonline;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -14,18 +13,7 @@ import java.util.Scanner;
  */
 public class Clientes extends Usuario {
     
-     /* Cada cliente tem o seu carrinho ///*
-         *//* os produtos que estao no carrinho pertencem ao cleitne*/
-    private ArrayList<Produto> carrinho = new ArrayList<>(); 
-
     
-    public ArrayList<Produto> getCarrinho() {
-        return carrinho;
-    }
-
-    public void setCarrinho(ArrayList<Produto> carrinho) {
-        this.carrinho = carrinho;
-    }
     
     
      public void menucliente(Clientes cliente, Loja loja){
@@ -50,7 +38,6 @@ public class Clientes extends Usuario {
         System.out.println(" [ 3 ]- Remover do meu carrinho");
         System.out.println(" [ 4 ]- Ver o meu carrinho ");
         System.out.println(" [ 5 ]- Fazer Checkout ");
-        System.out.println(" [ 6 ]- Voltar ao MENU PRINCIPAL ");
         System.out.println(" [ 0 ]- Logout  ");
         System.out.print("                                      Sua resposta: ");
         
@@ -105,23 +92,27 @@ public class Clientes extends Usuario {
             case 5->{
 
                 System.out.println("\n************** CHECKOUT ******************");
-                loja.finalizar_compra();
+                float  preco_final =loja.finalizar_compra();
+                if(preco_final > 0){
+                
+                System.out.println("*********************************************************************");
+                System.out.println("    TOTAL A PAGAR: "+preco_final+" AKZ");
+                System.out.println("*********************************************************************");
+                System.out.println( " SUCESSO, AGRADECEMOS A SUA PREFERENCIA, VOLTE SEMPRE ! ");
+                
+                }
+                
 
             }
 
 
 
 }
-
-            
           
         }while(opcao!=0);
-       
-       
         
-   
-        
-     
+        loja.esvaziar_o_carrinho();
+       
     }
   
         

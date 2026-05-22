@@ -41,21 +41,33 @@ public class Loja {
         this.clientes = clientes;
     }
     
-    
+    //cliente
     public void adicionarclientes( Clientes cliente){
-       
+       int id = 0;
         /*adiciona os clientes que foram setados /*
         *//* no objeto clientes la no menu prinicpal */
+        for(Clientes cli: clientes){
+            id = cli.getid();
+        }
+        id++;
+        cliente.setid(id);
         clientes.add(cliente);
-       
  
      }
     
-    
+
+    // admin 
       public void adicionarAdmin( Admin admin){
+          int id =0;
+          for(Admin ad: adm){
+                id = ad.getid(); 
+          }
+       
+       admin.setid(id);
        adm.add(admin);
       
      }
+      
     
         public ArrayList<Admin> obterAdm(){
             /*ESSA FUNCAO NOS AJUDA A OBTER OS CLIENTES E VERIFICAR LA NO LOGIN USANDO ORETORNO*/
@@ -63,8 +75,17 @@ public class Loja {
     }
 
         
+        
     // funcionalidades do produto
     public void adicionar_produto(Produto produto){
+        int id=0; 
+        
+        for(Produto p: produtos){
+            id = p.getId();
+        }    
+        
+        id++;
+        produto.setId(id);
         produtos.add(produto);
     }
     
@@ -112,10 +133,6 @@ public class Loja {
 
     System.out.println("==============================================================================================\n");
 } 
-
-
-
-   
    
    public int procurar_produto(int id){
        
@@ -145,11 +162,22 @@ public class Loja {
    }
    
    // funcionalidades do carrinho
+   
+   public int verficar_no_carrinho(int id){
+       int qtd= 0;
+       for(int i = 0; i<carrinho.size(); i++){
+           Produto p = carrinho.get(i);
+           if(p.getId() == id)
+               qtd = qtd+ quantidade.get(i);
+       }
+       return qtd;
+   }
     
     public void adicionar_ao_carrinho(int qtd, int id){
         
         for (Produto p : produtos){
             if(id == p.getId()){
+                qtd = qtd + verficar_no_carrinho(id);      
                 if(p.getEstoque() < qtd){
 
 
@@ -157,8 +185,19 @@ public class Loja {
                     System.out.println("ESTOQUE: "+p.getEstoque());
                     System.out.println("QUANTIDADE PEDIDA: "+qtd);
                     return;
-                  
                 }
+                
+                // caso ja exista no carrinho
+            for (int i = 0; i < carrinho.size(); i++){
+                    
+                    if(carrinho.get(i).getId() == id){
+                        
+                        quantidade.set(i,qtd);
+                        System.out.println("quantidade foi actualizada no produto do carrinho");
+                        return; 
+                    }
+                }
+                
                 carrinho.add(p);
                 quantidade.add(qtd);
                 System.out.println(" O seu produto foi adicionado ao carrinho com sucesso !!");
@@ -175,16 +214,20 @@ public class Loja {
     public void remover_do_carrinho(int id){
         
         for(int i=0; i<carrinho.size();i++){
-            Produto p = carrinho.get(i);
-            if(p.getId() == id){
-                carrinho.remove(p);
+            
+            if(carrinho.get(i).getId() == id){
+                carrinho.remove(i);
+                carrinho.remove(i);
+                
                 System.out.println(" Produto removido com sucesso !! ");
+                return;
             }
                 
         }
-    
+        System.out.println("Produto não encontrado");
     }
    
+    
     public void visualizar_meu_carrinho(){
         
         for(int i = 0; i< carrinho.size(); i++){
@@ -208,16 +251,13 @@ public class Loja {
         
     }
 
-
-
-    
      public float finalizar_compra(){
         float preco_final =0;
 
         if(carrinho.isEmpty()){
 
         System.out.println("\nO seu carrinho está vazio.");
-        
+        return 0;
     }
 
         
@@ -229,21 +269,28 @@ public class Loja {
                 if(p.getId() == p2.getId()){
                     
                     int quant = p2.getEstoque();
+                    
                     quant = quant - qtd;
+                    
                     p2.setEstoque(quant);
+     
                 }       
             }
             preco_final = preco_final + (p.getPrecoproduto() * qtd);
         }
-
-            System.out.println("*********************************************************************");
-            System.out.println("    TOTAL A PAGAR: "+preco_final+" AKZ");
-            System.out.println("*********************************************************************");
-            System.out.println( " SUCESSO, AGRADECEMOS A SUA PREFERENCIA, VOLTE SEMPRE ! ");
-      
+        
+        carrinho.clear();
+        quantidade.clear();
+        
         return preco_final;
         
     }
 
-
+     
+     public void esvaziar_o_carrinho(){
+         
+         carrinho.clear();
+         quantidade.clear();
+     }
+     
 }
