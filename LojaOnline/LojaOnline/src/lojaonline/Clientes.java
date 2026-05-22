@@ -20,11 +20,6 @@ public class Clientes extends Usuario {
          
         Scanner leia= new Scanner(System.in);
         int opcao;
-      
-        
-       
-        
-        
         
         do{
 
