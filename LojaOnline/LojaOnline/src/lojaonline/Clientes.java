@@ -69,7 +69,7 @@ public class Clientes extends Usuario {
             case 3->{
 
                 System.out.println("\n*************** REMOVER DO MEU CARRINHO ******************");
-                loja.visualizar_produto();
+                loja.visualizar_meu_carrinho();
             System.out.print(" DIGITE O ID DO PRODUTO QUE PRETENDE REMOVER: ");
             int id =leia.nextInt();
 

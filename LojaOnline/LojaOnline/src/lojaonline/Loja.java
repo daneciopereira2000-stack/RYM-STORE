@@ -214,10 +214,10 @@ public class Loja {
     public void remover_do_carrinho(int id){
         
         for(int i=0; i<carrinho.size();i++){
-            
+        
             if(carrinho.get(i).getId() == id){
                 carrinho.remove(i);
-                carrinho.remove(i);
+                quantidade.remove(i);
                 
                 System.out.println(" Produto removido com sucesso !! ");
                 return;
