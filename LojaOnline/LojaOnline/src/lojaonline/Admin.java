@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package lojaonline;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,7 @@ public class Admin extends Usuario{
    public void menuadmin(Usuario usuario, Loja loja, Admin admin, Clientes clientes, Produto produto){  /*Passagem de objeto por parâmetro */
        
         Scanner leia= new Scanner(System.in);
+        Pattern pattern = Pattern.compile("@gmail\\.com$");
         
         
         
@@ -91,6 +93,18 @@ public class Admin extends Usuario{
                 
                 System.out.print("DIGITE O SEU MELHOR EMAIL: ");
                 String email=leia.nextLine();
+                
+                Matcher match = pattern.matcher(email);
+                
+                
+                while(match.find() != true){
+                    System.out.println("email invalido");
+                    System.out.println("Exemplo:user@gmail.com"); 
+                    System.out.print("Digite novamente: ");
+                    email=leia.nextLine();
+                    
+                    match = pattern.matcher(email);
+                }
            
                 System.out.print("DIGITE A SUA SENHA ");
                 String senha=leia.nextLine();
@@ -113,6 +127,17 @@ public class Admin extends Usuario{
                 
                 System.out.print("DIGITE O SEU MELHOR EMAIL: ");
                 String email=leia.nextLine();
+                
+                Matcher match = pattern.matcher(email);
+              
+                while(match.find() != true){
+                    System.out.println("email invalido");
+                    System.out.println("Exemplo:user@gmail.com"); 
+                    System.out.print("Digite novamente: ");
+                    email=leia.nextLine();
+                    
+                    match = pattern.matcher(email);
+                }
            
                 System.out.print("DIGITE A SUA SENHA ");
                 String senha=leia.nextLine();
@@ -174,6 +199,34 @@ public class Admin extends Usuario{
                     
             }
             
+            case 5 ->{
+            
+                System.out.print("Digite o id do produto: ");    
+                int id= leia.nextInt();
+                
+                if(loja.procurar_produto(id) == 1){
+                
+                 System.out.print("Digite o nome do produto: ");
+                String nome = leia.nextLine();
+                
+                String categoria="ELECTRONICOS";
+               
+                
+                System.out.print("Digite a quantidade em estoque: ");
+                int estoque = leia.nextInt();
+            
+                System.out.print("Digite o preço: ");
+                float preco = leia.nextFloat();
+                leia.nextLine();
+                
+                loja.actualizar_produto(id, nome, preco, estoque);
+                
+                }
+                else
+                    System.out.println("Produto não encontrado");
+            
+            
+            }
             
             case 6 ->{
                 
