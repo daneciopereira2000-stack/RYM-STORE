@@ -319,7 +319,17 @@ public class Admin extends Usuario{
                         
                       }
                   }
-                  
+            
+            case 7 -> {
+                
+                System.out.print("Digite o id do produto:");
+                int id = leia.nextInt();
+                        
+                loja.remover_produto(id);
+            
+            
+            
+            }     
          
              case 8 ->{
                  
