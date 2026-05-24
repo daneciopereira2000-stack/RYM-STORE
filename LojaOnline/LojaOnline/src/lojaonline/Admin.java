@@ -208,10 +208,7 @@ public class Admin extends Usuario{
                 
                  System.out.print("Digite o nome do produto: ");
                 String nome = leia.nextLine();
-                
-                String categoria="ELECTRONICOS";
-               
-                
+                                              
                 System.out.print("Digite a quantidade em estoque: ");
                 int estoque = leia.nextInt();
             
