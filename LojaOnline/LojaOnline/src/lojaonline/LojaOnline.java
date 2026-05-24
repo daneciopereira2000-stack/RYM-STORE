@@ -39,8 +39,9 @@ public class LojaOnline {
          Matcher match;
          
         do{
-            System.out.println("");
-            System.out.println("");
+            System.out.println("Super Admin:");
+            System.out.println("admin@gmail.com");
+            System.out.println("1234");
         
         System.out.println("***************[MENU PRINCIPAL]******************"); 
             
