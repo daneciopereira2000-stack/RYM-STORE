@@ -40,8 +40,8 @@ public class LojaOnline {
          
         do{
             System.out.println("Super Admin:");
-            System.out.println("admin@gmail.com");
-            System.out.println("1234");
+            System.out.println("email: admin@gmail.com");
+            System.out.println("Senha: 1234");
         
         System.out.println("***************[MENU PRINCIPAL]******************"); 
             
