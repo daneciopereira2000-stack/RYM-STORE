@@ -28,55 +28,7 @@ public class LojaOnline
         Produto produto = new Produto();
         Clientes clientes = new Clientes();
         Loja loja = new Loja();
-<<<<<<< HEAD
-        Admin admin= new Admin();
-        int id =0;
         
-       
-        
-         Pattern pattern = Pattern.compile("@gmail\\.com$");
-         Matcher match;
-         
-        do{
-            System.out.println("Super Admin:");
-            System.out.println("email: admin@gmail.com");
-            System.out.println("Senha: 1234");
-        
-        System.out.println("***************[MENU PRINCIPAL]******************"); 
-            
-        System.out.println(" [ 1 ]- Login ");
-        System.out.println(" [ 2 ]- Cadastrar-me ");
-        System.out.println(" [ 3 ]- Ver produtos");
-        System.out.println(" [ 0 ]- Sair   ");
-        System.out.print("                              Sua resposta: ");
-        opcao= leia.nextInt();
-        leia.nextLine();
-        
-        
-         switch(opcao){
-            case 1 -> {
-                
-                boolean ativo = false;
-                System.out.println("\n*************** LOGIN ***************************");
-                
-                System.out.print("DIGITE O EMAIL: ");
-                String email = leia.nextLine();
-                
-                
-                System.out.print("DIGITE A SENHA: ");
-                String senha=leia.nextLine();
-                
-                usuario.setEmail(email);
-                usuario.setSenha(senha);
-              
-                if("admin@gmail.com".equals(usuario.getEmail()) && "1234".equals(usuario.getSenha())){
-                    ativo = true;
-                    admin.menuadmin(usuario,loja, admin, clientes,produto); /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
-                }
-                
-                for( Clientes cliente: loja.getClientes() ){
-                    if(cliente.getEmail().equals(email) && cliente.getSenha().equals(senha)){
-=======
         Admin admin = new Admin();
         int id = 0;
 
@@ -114,7 +66,6 @@ public class LojaOnline
 
                     if ("admin@gmail.com".equals(usuario.getEmail()) && "1234".equals(usuario.getSenha()))
                     {
->>>>>>> manasses
                         ativo = true;
                         admin.menuadmin(usuario, loja, admin, clientes, produto);
                         /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
@@ -230,5 +181,4 @@ public class LojaOnline
 
         System.out.println("");
     }
-
 }

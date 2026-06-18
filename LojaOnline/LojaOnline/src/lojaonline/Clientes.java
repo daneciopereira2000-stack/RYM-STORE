@@ -35,68 +35,12 @@ public class Clientes extends Usuario
             opcao = leia.nextInt();
             leia.nextLine();
 
-<<<<<<< HEAD
-            case 1->{
-
-                 System.out.println("\n*************** VER PRODUTOS ******************");
-                loja.visualizar_produto(); }
-
-            case 2->{
-
-                System.out.println("\n*************** ADICIONAR AO MEU CARRINHO ******************");
-
-   
-    loja.visualizar_produto();
-
-    
-    System.out.print("Digite o ID do produto: ");
-    int id = leia.nextInt();
-
-    
-    System.out.print("Digite a quantidade: ");
-    int qtd = leia.nextInt();
-
-    
-    loja.adicionar_ao_carrinho(qtd, id); }
-
-
-            case 3->{
-
-                System.out.println("\n*************** REMOVER DO MEU CARRINHO ******************");
-                loja.visualizar_meu_carrinho();
-            System.out.print(" DIGITE O ID DO PRODUTO QUE PRETENDE REMOVER: ");
-            int id =leia.nextInt();
-
-            loja.remover_do_carrinho(id);  }
-
-
-            case 4->{
-
-                System.out.println("\n*************** VER MEU CARRINHO ******************");
-                loja.visualizar_meu_carrinho();
-
-
-            }
-
-            case 5->{
-
-                System.out.println("\n************** CHECKOUT ******************");
-                float  preco_final =loja.finalizar_compra();
-                if(preco_final > 0){
-                
-                System.out.println("*********************************************************************");
-                System.out.println("    TOTAL A PAGAR: "+preco_final+" AKZ");
-                System.out.println("*********************************************************************");
-                System.out.println( " SUCESSO, AGRADECEMOS A SUA PREFERENCIA, VOLTE SEMPRE ! ");
-                
-=======
             switch (opcao)
             {
                 case 1 ->
                 {
                     System.out.println("\n*************** VER PRODUTOS ******************");
                     loja.visualizar_produto();
->>>>>>> manasses
                 }
 
                 case 2 ->
@@ -112,7 +56,7 @@ public class Clientes extends Usuario
                     int qtd = leia.nextInt();
 
                     loja.adicionar_ao_carrinho(qtd, id);
-                    
+
                     leia.nextLine();
                 }
                 case 3 ->
@@ -123,7 +67,7 @@ public class Clientes extends Usuario
                     int id = leia.nextInt();
 
                     loja.remover_do_carrinho(id);
-                    
+
                     leia.nextLine();
                 }
                 case 4 ->
