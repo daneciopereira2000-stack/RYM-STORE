@@ -12,7 +12,6 @@ import java.util.Scanner;
  */
 public class Clientes extends Usuario
 {
-
     public void menucliente(Clientes cliente, Loja loja)
     {
         Scanner leia = new Scanner(System.in);
@@ -20,7 +19,7 @@ public class Clientes extends Usuario
 
         do
         {
-            System.out.println("\n***************[MENU CLIENTE]******************");
+            System.out.println("\n*************** [MENU CLIENTE] ******************");
             System.out.println("\nOla " + cliente.getNome() + ", o que deseja?\n");
             System.out.println("***********************************************\n");
 
@@ -39,63 +38,56 @@ public class Clientes extends Usuario
             {
                 case 1 ->
                 {
-                    System.out.println("\n*************** VER PRODUTOS ******************");
-                    loja.visualizar_produto();
+                    System.out.println("\n*************** [VER PRODUTOS] ******************");
+                    loja.visualizaProduto();
                 }
-
                 case 2 ->
                 {
-                    System.out.println("\n*************** ADICIONAR AO MEU CARRINHO ******************");
+                    System.out.println("\n*************** [ADICIONAR AO MEU CARRINHO] ******************");
 
-                    loja.visualizar_produto();
+                    loja.visualizaProduto();
 
+                    System.out.println();
                     System.out.print("Digite o ID do produto: ");
                     int id = leia.nextInt();
 
                     System.out.print("Digite a quantidade: ");
                     int qtd = leia.nextInt();
 
-                    loja.adicionar_ao_carrinho(qtd, id);
-
+                    loja.adicionarAoCarrinho(qtd, id);
+                    
                     leia.nextLine();
                 }
                 case 3 ->
                 {
-                    System.out.println("\n*************** REMOVER DO MEU CARRINHO ******************");
-                    loja.visualizar_produto();
-                    System.out.print(" DIGITE O ID DO PRODUTO QUE PRETENDE REMOVER: ");
-                    int id = leia.nextInt();
-
-                    loja.remover_do_carrinho(id);
-
-                    leia.nextLine();
+                    System.out.println("\n*************** [REMOVER DO MEU CARRINHO] ******************\n");
+                    loja.visualizarMeuCarrinho();
                 }
                 case 4 ->
                 {
-                    System.out.println("\n*************** VER MEU CARRINHO ******************");
-                    loja.visualizar_meu_carrinho();
+                    System.out.println("\n*************** [VER MEU CARRINHO] ******************\n");
+                    loja.visualizarMeuCarrinho();
                 }
                 case 5 ->
                 {
-                    System.out.println("\n************** CHECKOUT ******************");
-                    float preco_final = loja.finalizar_compra();
+                    System.out.println("\n************** [CHECKOUT] ******************\n");
+                    float preco_final = loja.finalizarCompra();
                     if (preco_final > 0)
                     {
 
                         System.out.println("*********************************************************************");
                         System.out.println("    TOTAL A PAGAR: " + preco_final + " AKZ");
-                        System.out.println("*********************************************************************");
+                        System.out.println("*********************************************************************\n");
                         System.out.println(" SUCESSO, AGRADECEMOS A SUA PREFERENCIA, VOLTE SEMPRE ! ");
                     }
                 }
             }
 
-            System.out.println("\n** Precione Enter para Continuar **\n");
+            System.out.println("\n** Precione Enter para Continuar **");
             leia.nextLine();
-
         }
         while (opcao != 0);
 
-        loja.esvaziar_o_carrinho();
+        loja.esvaziarCarrinho();
     }
 }

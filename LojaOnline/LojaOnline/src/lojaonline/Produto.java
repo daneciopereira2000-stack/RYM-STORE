@@ -8,50 +8,66 @@ package lojaonline;
  *
  * @author MM
  */
-public class Produto {
-    private int id, estoque;
-    private String nomeproduto, categoriaproduto="ELECTRONICOS";
+public class Produto
+{
+    private int id;
+    private int estoque;
+    private String nomeproduto;
+    private String categoriaproduto;
     private float precoproduto;
-
-    public int getId() {
-        return id;
+    
+    public Produto()
+    {
+        this.categoriaproduto = "ELECTRONICOS";
     }
 
-    public void setId(int id) {
+    public int getId()
+    {
+        return this.id;
+    }
+
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public int getEstoque() {
-        return estoque;
+    public int getEstoque()
+    {
+        return this.estoque;
     }
 
-    public void setEstoque(int estoque) {
+    public void setEstoque(int estoque)
+    {
         this.estoque = estoque;
     }
 
-    public String getNomeproduto() {
-        return nomeproduto;
+    public String getNomeproduto()
+    {
+        return this.nomeproduto;
     }
 
-    public void setNomeproduto(String nomeproduto) {
+    public void setNomeproduto(String nomeproduto)
+    {
         this.nomeproduto = nomeproduto;
     }
 
-    public String getCategoriaproduto() {
-        return categoriaproduto;
+    public String getCategoriaproduto()
+    {
+        return this.categoriaproduto;
     }
 
-    public void setCategoriaproduto(String categoriaproduto) {
+    public void setCategoriaproduto(String categoriaproduto)
+    {
         this.categoriaproduto = categoriaproduto;
     }
 
-    public float getPrecoproduto() {
-        return precoproduto;
+    public float getPrecoproduto()
+    {
+        return this.precoproduto;
     }
 
-    public void setPrecoproduto(float precoproduto) {
+    public void setPrecoproduto(float precoproduto)
+    {
         this.precoproduto = precoproduto;
-        
     }
-    
 }

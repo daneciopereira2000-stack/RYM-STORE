@@ -3,5 +3,9 @@
 /LojaOnline/LojaOnline/dist/
 
 .DS_Store
+*.pem
 LojaOnline/.DS_Store
 
+*.class
+build/
+dist/
