@@ -28,6 +28,7 @@ public class LojaOnline
         Produto produto = new Produto();
         Clientes clientes = new Clientes();
         Loja loja = new Loja();
+        
         Admin admin = new Admin();
                 
         int id = 0;

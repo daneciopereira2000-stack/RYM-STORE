@@ -62,12 +62,6 @@ public class Clientes extends Usuario
                 {
                     System.out.println("\n*************** [REMOVER DO MEU CARRINHO] ******************\n");
                     loja.visualizarMeuCarrinho();
-                    System.out.print(" DIGITE O ID DO PRODUTO QUE PRETENDE REMOVER: ");
-                    int id = leia.nextInt();
-
-                    loja.removerDoCarrinho(id);
-                    
-                    leia.nextLine();
                 }
                 case 4 ->
                 {
@@ -91,7 +85,6 @@ public class Clientes extends Usuario
 
             System.out.println("\n** Precione Enter para Continuar **");
             leia.nextLine();
-
         }
         while (opcao != 0);
 

@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  *
@@ -255,25 +256,43 @@ public class Loja
 
     public void visualizarMeuCarrinho()
     {
+        Scanner leia = new Scanner(System.in);
         float precoFinal = 0;
-        
-        for (int i = 0; i < this.carrinho.size(); i++)
+
+        if (this.carrinho.isEmpty())
         {
-            Produto p = this.carrinho.get(i);
-            int qtd = this.quantidade.get(i);
+            System.out.println(" Carinho Vazio !");
+        }
+        else
+        {
+            for (int i = 0; i < this.carrinho.size(); i++)
+            {
+                Produto p = this.carrinho.get(i);
+                int qtd = this.quantidade.get(i);
 
-            precoFinal = precoFinal + (p.getPrecoproduto() * qtd);
+                precoFinal = precoFinal + (p.getPrecoproduto() * qtd);
 
-            System.out.println("PRODUTO: " + p.getNomeproduto());
-            System.out.println("ID:" + p.getId());
-            System.out.println("PRECO:" + p.getPrecoproduto());
-            System.out.println("QUANTIDADE: " + qtd);
-            System.out.println("-----------------------------------------------------------------");
+                System.out.println("PRODUTO: " + p.getNomeproduto());
+                System.out.println("ID:" + p.getId());
+                System.out.println("PRECO:" + p.getPrecoproduto());
+                System.out.println("QUANTIDADE: " + qtd);
+                System.out.println("-----------------------------------------------------------------");
+            }
         }
 
         System.out.println("\n*********************************************************************");
         System.out.println("    TOTAL A PAGAR: " + precoFinal + " AKZ");
         System.out.println("*********************************************************************");
+
+        if (!this.carrinho.isEmpty())
+        {
+            System.out.print("\n DIGITE O ID DO PRODUTO QUE PRETENDE REMOVER: ");
+            int id = leia.nextInt();
+
+            leia.nextLine();
+
+            this.removerDoCarrinho(id);
+        }
     }
 
     public float finalizarCompra()
@@ -371,13 +390,6 @@ public class Loja
             System.out.println("Erro ao salvar administradores: " + e.getMessage());
         }
     }
-    
-    
-
-    
-    
-    
-    
 
     public void carregarDados()
     {

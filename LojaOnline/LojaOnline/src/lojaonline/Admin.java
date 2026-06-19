@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class Admin extends Usuario
 {
+
     public void menuadmin(Usuario usuario, Loja loja, Admin admin, Clientes clientes, Produto produto)
     {
         /*Passagem de objeto por parâmetro */
@@ -57,7 +58,7 @@ public class Admin extends Usuario
 
                     System.out.print("Digite o preço: ");
                     float preco = leia.nextFloat();
-                    
+
                     leia.nextLine();
 
                     produto.setNomeproduto(nome);
@@ -77,9 +78,9 @@ public class Admin extends Usuario
                     System.out.print("                      Sua resposta: ");
 
                     int op = leia.nextInt();
-                    
+
                     leia.nextLine();
-                   
+
                     if (op == 1)
                     {
                         admin = new Admin();
@@ -102,7 +103,7 @@ public class Admin extends Usuario
                                 break;
                             }
                         }
-                        
+
                         for (Admin a : loja.getAdm())
                         {
                             if (a.getEmail().equals(email))
@@ -111,7 +112,7 @@ public class Admin extends Usuario
                                 break;
                             }
                         }
-                        
+
                         /* verificar o formato de email*/
                         System.out.println("\nNovo ADMIN " + nome + ", foi cadastrado com sucesso, use estes dados para efectuar o login e gerir o sistema.\n");
 
@@ -142,7 +143,7 @@ public class Admin extends Usuario
                                 break;
                             }
                         }
-                        
+
                         System.out.println("\nParabens e seja Bem Vindo " + nome + ", use os seus dados para efectuar o login e finalizar as suas compras.\n");
                         clientes.setNome(nome);
                         clientes.setEmail(email);
@@ -191,7 +192,7 @@ public class Admin extends Usuario
 
                     int op = leia.nextInt();
                     leia.nextLine();
-                    
+
                     if (op == 1)
                     {
                         admin.menuadmin(usuario, loja, admin, clientes, produto);
@@ -236,7 +237,7 @@ public class Admin extends Usuario
 
                         int op = leia.nextInt();
                         leia.nextLine();
-                        
+
                         if (op == 1)
                         {
                             admin.menuadmin(usuario, loja, admin, clientes, produto);
@@ -270,7 +271,7 @@ public class Admin extends Usuario
                         System.out.println("\n [ 1 ]- Voltar ao MENU ADMIN");
                         System.out.print("Sua resposta:");
                         int op = leia.nextInt();
-                        
+
                         leia.nextLine();
 
                         if (op == 1)
@@ -346,9 +347,9 @@ public class Admin extends Usuario
                     System.out.print("Sua resposta:   ");
 
                     int op = leia.nextInt();
-                    
+
                     leia.nextLine();
-                    
+
                     if (op == 1)
                     {
                         admin.menuadmin(usuario, loja, admin, clientes, produto);
