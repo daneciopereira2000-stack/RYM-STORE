@@ -8,14 +8,17 @@ package lojaonline;
  *
  * @author MM
  */
-public class Categoria {
+public class Categoria
+{
     private String nomecategoria;
 
-    public String getNomecategoria() {
-        return nomecategoria;
+    public String getNomecategoria()
+    {
+        return this.nomecategoria;
     }
 
-    public void setNomecategoria(String nomecategoria) {
+    public void setNomecategoria(String nomecategoria)
+    {
         this.nomecategoria = nomecategoria;
     }
 }

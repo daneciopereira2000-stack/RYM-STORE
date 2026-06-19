@@ -65,7 +65,7 @@ public class Admin extends Usuario
                     produto.setPrecoproduto(preco);
                     produto.setEstoque(estoque);
 
-                    loja.adicionar_produto(produto);
+                    loja.adicionarProduto(produto);
 
                     System.out.println(" Sucesso, o seu produto foi adicionado com sucesso ao estoque !");
                 }
@@ -154,7 +154,7 @@ public class Admin extends Usuario
                 case 3 ->
                 {
                     System.out.println("*************** VER PRODUTOS ******************");
-                    loja.visualizar_produto();
+                    loja.visualizaProduto();
                 }
 
                 case 4 ->
@@ -357,7 +357,5 @@ public class Admin extends Usuario
             }
         }
         while (opcao != 0);
-
     }
-
 }

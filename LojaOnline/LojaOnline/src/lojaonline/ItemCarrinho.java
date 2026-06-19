@@ -11,7 +11,12 @@ package lojaonline;
 public class ItemCarrinho
 {
     private Produto produto;
-    private int quantidade = 0;
+    private int quantidade;
+    
+    public ItemCarrinho()
+    {
+        this.quantidade  = 0;
+    }
     
     public ItemCarrinho(Produto produto)
     {

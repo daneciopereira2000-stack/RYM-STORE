@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
  */
 public class LojaOnline
 {
-
     /**
      * @param args the command line arguments
      */
@@ -23,25 +22,54 @@ public class LojaOnline
         // TODO code application logic here
         Scanner leia = new Scanner(System.in);
         int opcao;
+        boolean automatico = false;
 
         Usuario usuario = new Usuario();
         Produto produto = new Produto();
         Clientes clientes = new Clientes();
         Loja loja = new Loja();
         Admin admin = new Admin();
+                
         int id = 0;
 
         Pattern pattern = Pattern.compile("@gmail\\.com$");
         Matcher match;
+        
+        do
+        {
+            System.out.println("*********** [MODO DE EXDECUSAO] ***********\n");
+            System.out.println(" [ 1 ] - Manual");
+            System.out.println(" [ 2 ] - Automatico");
+            System.out.print("                              Sua resposta: ");
+            opcao = leia.nextInt();
+            leia.nextLine();
+ 
+            if (opcao != 1 && opcao != 2)
+            {
+                System.out.println(" Opcao invalida \n");
+                System.out.println(" Precione Enter para continuar...");
+                leia.nextLine();
+            }
+            else if (opcao == 2)
+            {
+                automatico = true;
+            }
+        }
+        while (opcao != 1 && opcao != 2);
+        
+        if (automatico)
+        {
+           loja.carregarDados(); 
+        }
 
         do
         {
-            System.out.println("\n***************[MENU PRINCIPAL]******************");
+            System.out.println("\n***************[MENU PRINCIPAL]******************\n");
 
-            System.out.println(" [ 1 ]- Login ");
-            System.out.println(" [ 2 ]- Cadastrar-me ");
-            System.out.println(" [ 3 ]- Ver produtos");
-            System.out.println(" [ 0 ]- Sair   ");
+            System.out.println(" [ 1 ] - Login ");
+            System.out.println(" [ 2 ] - Cadastrar-me ");
+            System.out.println(" [ 3 ] - Ver produtos");
+            System.out.println(" [ 0 ] - Sair   ");
             System.out.print("                              Sua resposta: ");
             opcao = leia.nextInt();
             leia.nextLine();
@@ -50,9 +78,9 @@ public class LojaOnline
             {
                 case 1 ->
                 {
-
                     boolean ativo = false;
-                    System.out.println("\n*************** LOGIN ***************************\n");
+                    
+                    System.out.println("\n*************** [LOGIN] ***************************\n");
 
                     System.out.print("DIGITE O EMAIL: ");
                     String email = leia.nextLine();
@@ -67,7 +95,6 @@ public class LojaOnline
                     {
                         ativo = true;
                         admin.menuadmin(usuario, loja, admin, clientes, produto);
-                        /* CHAMADA DO METODO QUE ESTA NA CLASSE ADMIN*/
                     }
 
                     for (Clientes cliente : loja.getClientes())
@@ -86,7 +113,6 @@ public class LojaOnline
                         {
                             admin.menuadmin(usuario, loja, admin, clientes, produto);
                         }
-
                     }
 
                     if (!ativo)
@@ -96,12 +122,10 @@ public class LojaOnline
                         System.out.println("\n** Precione Enter para Continuar **\n");
                         leia.nextLine();
                     }
-
                 }
-
                 case 2 ->
                 {
-                    System.out.println("\n*************** CADASTRAR **********************\n");
+                    System.out.println("\n*************** [CADASTRAR] **********************\n");
 
                     System.out.print("DIGITE O SEU NOME: ");
                     String nome = leia.nextLine();
@@ -162,23 +186,20 @@ public class LojaOnline
                 }
                 case 3 ->
                 {
-                    System.out.println("*************** VER PRODUTOS ******************");
-                    loja.visualizar_produto();
+                    System.out.println("\n*************** [VER PRODUTOS] ******************");
+                    loja.visualizaProduto();
 
                     System.out.println("\n** Precione Enter para Continuar **\n");
                     leia.nextLine();
                 }
-
                 case 0 ->
                 {
                     return;
                 }
             }
-
         }
         while (opcao != 0);
 
         System.out.println("");
     }
-
 }
