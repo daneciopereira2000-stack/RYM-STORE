@@ -307,6 +307,8 @@ public class Admin extends Usuario
                                 System.out.println("[AVISO] Entrada incorreta! Digite um valor decimal válido. O preço não foi alterado.");
                             }
                         }
+                        
+                        loja.salvarDados();
 
                         System.out.println("\n [SUCESSO] Processo de atualização concluído!");
                     }
