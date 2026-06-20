@@ -19,16 +19,19 @@ public class Clientes extends Usuario
 
         do
         {
-            System.out.println("\n*************** [MENU CLIENTE] ******************");
-            System.out.println("\nOla " + cliente.getNome() + ", o que deseja?\n");
-            System.out.println("***********************************************\n");
+            System.out.println("\n==================================================================");
+            System.out.println("                            [MENU CLIENTE]                          ");
+            System.out.println("==================================================================\n");
+            System.out.println("Ola " + cliente.getNome() + ", o que deseja?\n");
+            System.out.println("------------------------------------------------------------------");
 
-            System.out.println(" [ 1 ]- Ver Produtos ");
-            System.out.println(" [ 2 ]- Adicionar ao meu Carrinho ");
-            System.out.println(" [ 3 ]- Remover do meu carrinho");
-            System.out.println(" [ 4 ]- Ver o meu carrinho ");
-            System.out.println(" [ 5 ]- Fazer Checkout ");
-            System.out.println(" [ 0 ]- Logout  ");
+            System.out.println(" [ 1 ] - Ver Produtos ");
+            System.out.println(" [ 2 ] - Adicionar ao meu Carrinho ");
+            System.out.println(" [ 3 ] - Remover do meu carrinho");
+            System.out.println(" [ 4 ] - Ver o meu carrinho ");
+            System.out.println(" [ 5 ] - Fazer Checkout ");
+            System.out.println(" [ 0 ] - Logout  ");
+            System.out.print("------------------------------------------------------------------\n");
             System.out.print("                                      Sua resposta: ");
 
             opcao = leia.nextInt();
@@ -55,31 +58,36 @@ public class Clientes extends Usuario
                     int qtd = leia.nextInt();
 
                     loja.adicionarAoCarrinho(qtd, id);
-                    
+
                     leia.nextLine();
                 }
                 case 3 ->
                 {
                     System.out.println("\n*************** [REMOVER DO MEU CARRINHO] ******************\n");
-                    loja.visualizarMeuCarrinho();
+                    loja.visualizarMeuCarrinho(false);
                 }
                 case 4 ->
                 {
                     System.out.println("\n*************** [VER MEU CARRINHO] ******************\n");
-                    loja.visualizarMeuCarrinho();
+                    loja.visualizarMeuCarrinho(true);
                 }
                 case 5 ->
                 {
                     System.out.println("\n************** [CHECKOUT] ******************\n");
-                    float preco_final = loja.finalizarCompra();
-                    if (preco_final > 0)
+                    
+                    float preceFinal = loja.finalizarCompra();
+                    
+                    if (preceFinal > 0)
                     {
-
                         System.out.println("*********************************************************************");
-                        System.out.println("    TOTAL A PAGAR: " + preco_final + " AKZ");
+                        System.out.println("    TOTAL A PAGAR: " + preceFinal + " AKZ");
                         System.out.println("*********************************************************************\n");
                         System.out.println(" SUCESSO, AGRADECEMOS A SUA PREFERENCIA, VOLTE SEMPRE ! ");
                     }
+                }
+                case 0 ->
+                {
+                    System.out.println("\n Logout com sucesso....");
                 }
             }
 
