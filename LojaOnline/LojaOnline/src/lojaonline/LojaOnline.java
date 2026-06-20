@@ -28,27 +28,28 @@ public class LojaOnline
         Produto produto = new Produto();
         Clientes clientes = new Clientes();
         Loja loja = new Loja();
-        
+
         Admin admin = new Admin();
-                
+
         int id = 0;
 
         Pattern pattern = Pattern.compile("@gmail\\.com$");
         Matcher match;
-        
+
         do
         {
             System.out.println("*********** [MODO DE EXDECUSAO] ***********\n");
             System.out.println(" [ 1 ] - Manual");
             System.out.println(" [ 2 ] - Automatico");
+            System.out.print("------------------------------------------------------------------\n");
             System.out.print("                              Sua resposta: ");
             opcao = leia.nextInt();
             leia.nextLine();
- 
+
             if (opcao != 1 && opcao != 2)
             {
-                System.out.println(" Opcao invalida \n");
-                System.out.println(" Precione Enter para continuar...");
+                System.out.println("\n Opcao invalida \n");
+                System.out.println("\n Precione Enter para continuar...");
                 leia.nextLine();
             }
             else if (opcao == 2)
@@ -57,10 +58,10 @@ public class LojaOnline
             }
         }
         while (opcao != 1 && opcao != 2);
-        
+
         if (automatico)
         {
-           loja.carregarDados(); 
+            loja.carregarDados();
         }
 
         do
@@ -71,6 +72,7 @@ public class LojaOnline
             System.out.println(" [ 2 ] - Cadastrar-me ");
             System.out.println(" [ 3 ] - Ver produtos");
             System.out.println(" [ 0 ] - Sair   ");
+            System.out.print("------------------------------------------------------------------\n");
             System.out.print("                              Sua resposta: ");
             opcao = leia.nextInt();
             leia.nextLine();
@@ -80,7 +82,7 @@ public class LojaOnline
                 case 1 ->
                 {
                     boolean ativo = false;
-                    
+
                     System.out.println("\n*************** [LOGIN] ***************************\n");
 
                     System.out.print("DIGITE O EMAIL: ");
@@ -174,7 +176,7 @@ public class LojaOnline
                     if (!existe)
                     {
                         id++;
-                        
+
                         System.out.println("\nParabens e seja Bem Vindo " + nome + ", use os seus dados para efectuar o login e finalizar as suas compras.");
 
                         clientes.setNome(nome);
