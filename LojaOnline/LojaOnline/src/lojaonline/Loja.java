@@ -67,16 +67,7 @@ public class Loja
     //cliente
     public void adicionarclientes(Clientes cliente)
     {
-        int id = 0;
-        /*adiciona os clientes que foram setados /*
-         *//* no objeto clientes la no menu prinicpal */
-        for (Clientes cli : this.clientes)
-        {
-            id = cli.getid();
-        }
-
-        id++;
-        cliente.setid(id);
+        cliente.setid(this.clientes.size() + 1);
         this.clientes.add(cliente);
         salvarDados();
     }
@@ -84,14 +75,7 @@ public class Loja
     // admin 
     public void adicionarAdmin(Admin admin)
     {
-        int id = 0;
-
-        for (Admin ad : this.adm)
-        {
-            id = ad.getid();
-        }
-
-        admin.setid(id);
+        admin.setid(this.adm.size() + 1);
         this.adm.add(admin);
         salvarDados();
     }
@@ -245,16 +229,17 @@ public class Loja
             if (this.carrinho.get(i).getId() == id)
             {
                 this.carrinho.remove(i);
-                this.carrinho.remove(i);
 
-                System.out.println(" Produto removido com sucesso !! ");
+                System.out.println("");
+                System.out.println(" -- Produto removido com sucesso !! -- ");
+                
                 return;
             }
         }
-        System.out.println("Produto não encontrado");
+        System.out.println("\n Produto não encontrado");
     }
 
-    public void visualizarMeuCarrinho()
+    public void visualizarMeuCarrinho(boolean verApenasCarrinho)
     {
         Scanner leia = new Scanner(System.in);
         float precoFinal = 0;
@@ -284,7 +269,7 @@ public class Loja
         System.out.println("    TOTAL A PAGAR: " + precoFinal + " AKZ");
         System.out.println("*********************************************************************");
 
-        if (!this.carrinho.isEmpty())
+        if (!this.carrinho.isEmpty() && !verApenasCarrinho)
         {
             System.out.print("\n DIGITE O ID DO PRODUTO QUE PRETENDE REMOVER: ");
             int id = leia.nextInt();
@@ -297,38 +282,91 @@ public class Loja
 
     public float finalizarCompra()
     {
-        float preco_final = 0;
+        float precoFinal = 0;
 
-        if (this.carrinho.isEmpty())
+        if (carrinho.isEmpty())
         {
             System.out.println("\nO seu carrinho está vazio.");
             return 0;
         }
 
-        for (int i = 0; i < this.carrinho.size(); i++)
+        long idFatura = System.currentTimeMillis() % 100000;
+        String nomeFicheiroFatura = "./faturas/fatura_" + idFatura + ".txt";
+
+        try (PrintWriter fileWriter = new PrintWriter(new FileWriter(nomeFicheiroFatura)))
         {
-            Produto p = this.carrinho.get(i);
-            int qtd = this.quantidade.get(i);
+            String cabecalho = "=====================================================================\n"
+                    + "                      LOJA ONLINE - FATURA RECIBO                    \n"
+                    + "=====================================================================\n\n"
+                    + " Fatura Nº: FT-2026-" + idFatura + "\n"
+                    + " Data de Emissão: 20/06/2026\n"
+                    + " Estado do Pagamento: PAGO\n\n"
+                    + "---------------------------------------------------------------------\n"
+                    + String.format("%-5s | %-30s | %-5s | %-15s\n", "ID", "Produto", "Qtd", "Preço Total")
+                    + "---------------------------------------------------------------------";
 
-            for (Produto p2 : this.produtos)
+            System.out.println("\n" + cabecalho);
+            fileWriter.println(cabecalho);
+
+            // CORPO DA FATURA (Processamento de Itens)
+            for (int i = 0; i < carrinho.size(); i++)
             {
-                if (p.getId() == p2.getId())
+                Produto p = carrinho.get(i);
+                int qtd = Math.min(quantidade.get(i), p.getEstoque()); // Prevenção básica de estouro de stock
+
+                // Atualizar stock local
+                for (Produto p2 : produtos)
                 {
-                    int quant = p2.getEstoque();
-
-                    quant = quant - qtd;
-
-                    p2.setEstoque(quant);
+                    if (p.getId() == p2.getId())
+                    {
+                        p2.setEstoque(p2.getEstoque() - qtd);
+                    }
                 }
+
+                float custoItem = p.getPrecoproduto() * qtd;
+                precoFinal += custoItem;
+
+                // Formatação da linha do item
+                String linhaItem = String.format("%-5d | %-30s | %-5d | %-12.2f AKZ",
+                        p.getId(),
+                        p.getNomeproduto(),
+                        qtd,
+                        custoItem
+                );
+
+                System.out.println(linhaItem);
+                fileWriter.println(linhaItem);
             }
-            preco_final = preco_final + (p.getPrecoproduto() * qtd);
+
+            // RODAPÉ (Totais e Fecho)
+            String rodape
+                    = "---------------------------------------------------------------------\n"
+                    + String.format("\n TOTAL DA COMPRA: %.2f AKZ\n", precoFinal)
+                    + "\n=====================================================================\n"
+                    + "        Obrigado pela preferência! Volte sempre ao nosso sistema.    \n"
+                    + "=====================================================================\n";
+
+            System.out.println(rodape);
+            fileWriter.println(rodape);
+
+            System.out.println("\n[INFO] Ficheiro físico de fatura exportado com sucesso: " + nomeFicheiroFatura + "\n");
+
+            salvarDados();
+
+            carrinho.clear();
+            quantidade.clear();
+
+            fileWriter.close();
+            
+            return precoFinal;
         }
-
-        this.carrinho.clear();
-        this.quantidade.clear();
-        salvarDados();
-
-        return preco_final;
+        catch (Exception e)
+        {
+            System.out.println("\n[ERRO] Não foi possível gerar o arquivo físico da fatura: " + e.getMessage());
+            System.out.println();
+            
+            return -1;
+        }
     }
 
     public void esvaziarCarrinho()
@@ -354,6 +392,8 @@ public class Loja
                 writer.println(p.getId() + ";" + p.getNomeproduto() + ";"
                         + p.getCategoriaproduto() + ";" + p.getPrecoproduto() + ";" + p.getEstoque());
             }
+            
+            writer.close();
         }
         catch (IOException e)
         {
@@ -369,6 +409,8 @@ public class Loja
             {
                 writer.println(c.getid() + ";" + c.getNome() + ";" + c.getEmail() + ";" + c.getSenha());
             }
+            
+            writer.close();
         }
         catch (IOException e)
         {
@@ -384,6 +426,8 @@ public class Loja
             {
                 writer.println(a.getid() + ";" + a.getNome() + ";" + a.getEmail() + ";" + a.getSenha());
             }
+            
+            writer.close();
         }
         catch (IOException e)
         {
@@ -419,6 +463,8 @@ public class Loja
                     this.produtos.add(p);
                 }
             }
+            
+            reader.close();
         }
         catch (IOException e)
         {
@@ -446,6 +492,8 @@ public class Loja
                     this.clientes.add(c);
                 }
             }
+            
+            reader.close();
         }
         catch (IOException e)
         {
@@ -473,6 +521,8 @@ public class Loja
                     this.adm.add(a);
                 }
             }
+            
+            reader.close();
         }
         catch (IOException e)
         {
