@@ -260,7 +260,7 @@ public class Admin extends Usuario
                         }
 
                         System.out.print("Nova quantidade em estoque (actual: " + prodEncontrado.getEstoque() + " | ou Enter para manter): ");
-                        String entradaEstoque = leia.nextLine(); // Lemos como texto para aceitar o "Enter" vazio
+                        String entradaEstoque = leia.nextLine();
 
                         if (!entradaEstoque.trim().isEmpty())
                         {
@@ -283,13 +283,12 @@ public class Admin extends Usuario
                         }
 
                         System.out.print("Novo preço (actual: " + prodEncontrado.getPrecoproduto() + " AKZ | ou Enter para manter): ");
-                        String entradaPreco = leia.nextLine(); // Lemos como texto para evitar quebras de buffer
+                        String entradaPreco = leia.nextLine();
 
                         if (!entradaPreco.trim().isEmpty())
                         {
                             try
                             {
-                                // Substitui vírgulas por pontos caso o utilizador digite no formato "1500,50"
                                 float novoPreco = Float.parseFloat(entradaPreco.replace(",", "."));
 
                                 if (novoPreco >= 0)
