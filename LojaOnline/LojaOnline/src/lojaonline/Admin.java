@@ -68,8 +68,7 @@ public class Admin extends Usuario
                     produto.setCategoriaproduto(categoria);
                     produto.setPrecoproduto(preco);
                     produto.setEstoque(estoque);
-
-                    // Gerar um ID automático incremental com base no tamanho da lista
+                    
                     int novoId = loja.getProdutos().size() + 1;
                     produto.setId(novoId);
 
