@@ -468,7 +468,7 @@ public class Loja
         }
         catch (IOException e)
         {
-            // Se o ficheiro não existir no primeiro arranque, avança silenciosamente
+            System.out.println("\n[ERROR] Ficheiro nao Encontrado...\n");
         }
     }
 
@@ -497,7 +497,7 @@ public class Loja
         }
         catch (IOException e)
         {
-            // Ficheiro ainda não criado
+            System.out.println("\n[ERROR] Ficheiro nao Encontrado...\n");
         }
     }
 
@@ -526,7 +526,7 @@ public class Loja
         }
         catch (IOException e)
         {
-            // Ficheiro ainda não criado
+            System.out.println("\n[ERROR] Ficheiro nao Encontrado...\n");
         }
     }
 }
