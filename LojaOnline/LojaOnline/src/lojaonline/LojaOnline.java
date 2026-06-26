@@ -115,6 +115,7 @@ public class LojaOnline
 
                         if (administrador.getEmail().equals(email) && administrador.getSenha().equals(senha))
                         {
+                            ativo = true;
                             admin.menuadmin(usuario, loja, admin, clientes, produto);
                         }
                     }
