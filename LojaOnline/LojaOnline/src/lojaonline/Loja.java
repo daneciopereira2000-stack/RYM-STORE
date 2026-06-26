@@ -88,16 +88,8 @@ public class Loja
 
     // funcionalidades do produto
     public void adicionarProduto(Produto produto)
-    {
-        int id = 0;
-
-        for (Produto p : this.produtos)
-        {
-            id = p.getId();
-        }
-
-        id++;
-        produto.setId(id);
+    {  
+        produto.setId(this.produtos.size()+1);
         this.produtos.add(produto);
         salvarDados();
     }
