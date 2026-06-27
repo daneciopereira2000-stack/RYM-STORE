@@ -55,8 +55,22 @@ public class Admin extends Usuario
                     System.out.print("Digite o nome do produto: ");
                     String nome = leia.nextLine();
 
-                    String categoria = "ELECTRONICOS";
-
+                    String categoria;
+                    int esc ;
+                    do{
+                        System.out.println("Escolha a categoria:      ");
+                        System.out.println("1 - Electronicos          ");
+                        System.out.println("2- Smartphone e celulares ");
+                        System.out.print("/>");
+                        esc = leia.nextInt();
+                    
+                    }while(esc < 0 && esc > 2 );
+                    
+                    if(esc == 1)
+                        categoria = "Electronicos ";
+                    else
+                        categoria = "Smartphone e celulares";
+                    
                     System.out.print("Digite a quantidade em estoque: ");
                     int estoque = leia.nextInt();
 
@@ -65,7 +79,7 @@ public class Admin extends Usuario
                     leia.nextLine();
 
                     produto.setNomeproduto(nome);
-                    produto.setCategoriaproduto(categoria);
+                    produto.setCategoriaproduto(categoria.toUpperCase());
                     produto.setPrecoproduto(preco);
                     produto.setEstoque(estoque);
                     
