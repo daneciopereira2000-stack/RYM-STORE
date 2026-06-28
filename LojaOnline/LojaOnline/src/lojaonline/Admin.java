@@ -5,6 +5,8 @@
 package lojaonline;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * AS CLASSES ADMIN E CLIENTES VAO HERDAR DO USUARIO
@@ -17,6 +19,8 @@ public class Admin extends Usuario
         /* Passagem de objeto por parâmetro */
         Scanner leia = new Scanner(System.in);
         int opcao = 0;
+        Pattern pattern = Pattern.compile("^[a-z]+@gmail\\.com$");
+        Matcher match;
 
         do
         {
@@ -108,9 +112,24 @@ public class Admin extends Usuario
                         System.out.println("\n********************* [NOVO ADMIN] ***************************\n");
                         System.out.print("DIGITE O SEU NOME: ");
                         String nome = leia.nextLine();
-
+                        
+                         
+                        
                         System.out.print("DIGITE O SEU MELHOR EMAIL: ");
                         String email = leia.nextLine();
+                        
+                        match = pattern.matcher(email);
+
+                    while (match.find() != true)
+                    {
+                        System.out.println("email invalido");
+                        System.out.println("Use apenas caracter ");
+                        System.out.println("Exemplo:user@gmail.com");
+                        System.out.print("Digite novamente: ");
+                        email = leia.nextLine();
+
+                        match = pattern.matcher(email);
+                    }
 
                         System.out.print("DIGITE A SUA SENHA: ");
                         String senha = leia.nextLine();
@@ -157,6 +176,19 @@ public class Admin extends Usuario
 
                         System.out.print("DIGITE O SEU MELHOR EMAIL: ");
                         String email = leia.nextLine();
+                        
+                        match = pattern.matcher(email);
+                        
+                        while (match.find() != true)
+                    {
+                        System.out.println("email invalido");
+                        System.out.println("Use apenas caracter ");
+                        System.out.println("Exemplo:user@gmail.com");
+                        System.out.print("Digite novamente: ");
+                        email = leia.nextLine();
+
+                        match = pattern.matcher(email);
+                    }
 
                         System.out.print("DIGITE A SUA SENHA: ");
                         String senha = leia.nextLine();

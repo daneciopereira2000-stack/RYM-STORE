@@ -34,12 +34,12 @@ public class LojaOnline
 
         int id = 0;
 
-        Pattern pattern = Pattern.compile("@gmail\\.com$");
+        Pattern pattern = Pattern.compile("^[a-z]+@gmail\\.com$");
         Matcher match;
 
         do
         {
-            System.out.println("*********** [MODO DE EXDECUSAO] ***********\n");
+            System.out.println("*********** [MODO DE EXECUSAO] ***********\n");
             System.out.println(" [ 1 ] - Manual");
             System.out.println(" [ 2 ] - Automatico");
             System.out.print("------------------------------------------------------------------\n");
@@ -144,6 +144,7 @@ public class LojaOnline
                     while (match.find() != true)
                     {
                         System.out.println("email invalido");
+                        System.out.println("Use apenas caracter ");
                         System.out.println("Exemplo:user@gmail.com");
                         System.out.print("Digite novamente: ");
                         email = leia.nextLine();
