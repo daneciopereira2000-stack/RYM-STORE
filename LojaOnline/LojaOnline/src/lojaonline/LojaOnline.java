@@ -23,7 +23,7 @@ public class LojaOnline
         Scanner leia = new Scanner(System.in);
         int opcao;
         boolean automatico = false;
-        boolean termo, politica;
+        
 
         Usuario usuario = new Usuario();
         Produto produto = new Produto();
