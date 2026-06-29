@@ -60,21 +60,27 @@ public class Admin extends Usuario
                     String nome = leia.nextLine();
 
                     String categoria;
-                    int esc ;
-                    do{
+                    int esc;
+                    do
+                    {
                         System.out.println("Escolha a categoria:      ");
                         System.out.println("1 - Electronicos          ");
                         System.out.println("2- Smartphone e celulares ");
                         System.out.print("/>");
                         esc = leia.nextInt();
-                    
-                    }while(esc < 0 && esc > 2 );
-                    
-                    if(esc == 1)
+
+                    }
+                    while (esc < 0 && esc > 2);
+
+                    if (esc == 1)
+                    {
                         categoria = "Electronicos ";
+                    }
                     else
+                    {
                         categoria = "Smartphone e celulares";
-                    
+                    }
+
                     System.out.print("Digite a quantidade em estoque: ");
                     int estoque = leia.nextInt();
 
@@ -86,7 +92,7 @@ public class Admin extends Usuario
                     produto.setCategoriaproduto(categoria.toUpperCase());
                     produto.setPrecoproduto(preco);
                     produto.setEstoque(estoque);
-                    
+
                     int novoId = loja.getProdutos().size() + 1;
                     produto.setId(novoId);
 
@@ -112,24 +118,22 @@ public class Admin extends Usuario
                         System.out.println("\n********************* [NOVO ADMIN] ***************************\n");
                         System.out.print("DIGITE O SEU NOME: ");
                         String nome = leia.nextLine();
-                        
-                         
-                        
+
                         System.out.print("DIGITE O SEU MELHOR EMAIL: ");
                         String email = leia.nextLine();
-                        
-                        match = pattern.matcher(email);
-
-                    while (match.find() != true)
-                    {
-                        System.out.println("email invalido");
-                        System.out.println("Use apenas caracter ");
-                        System.out.println("Exemplo:user@gmail.com");
-                        System.out.print("Digite novamente: ");
-                        email = leia.nextLine();
 
                         match = pattern.matcher(email);
-                    }
+
+                        while (match.find() != true)
+                        {
+                            System.out.println("email invalido");
+                            System.out.println("Use apenas caracter ");
+                            System.out.println("Exemplo:user@gmail.com");
+                            System.out.print("Digite novamente: ");
+                            email = leia.nextLine();
+
+                            match = pattern.matcher(email);
+                        }
 
                         System.out.print("DIGITE A SUA SENHA: ");
                         String senha = leia.nextLine();
@@ -176,19 +180,19 @@ public class Admin extends Usuario
 
                         System.out.print("DIGITE O SEU MELHOR EMAIL: ");
                         String email = leia.nextLine();
-                        
-                        match = pattern.matcher(email);
-                        
-                        while (match.find() != true)
-                    {
-                        System.out.println("email invalido");
-                        System.out.println("Use apenas caracter ");
-                        System.out.println("Exemplo:user@gmail.com");
-                        System.out.print("Digite novamente: ");
-                        email = leia.nextLine();
 
                         match = pattern.matcher(email);
-                    }
+
+                        while (match.find() != true)
+                        {
+                            System.out.println("email invalido");
+                            System.out.println("Use apenas caracter ");
+                            System.out.println("Exemplo:user@gmail.com");
+                            System.out.print("Digite novamente: ");
+                            email = leia.nextLine();
+
+                            match = pattern.matcher(email);
+                        }
 
                         System.out.print("DIGITE A SUA SENHA: ");
                         String senha = leia.nextLine();
@@ -351,7 +355,7 @@ public class Admin extends Usuario
                                 System.out.println("[AVISO] Entrada incorreta! Digite um valor decimal válido. O preço não foi alterado.");
                             }
                         }
-                        
+
                         loja.salvarDados();
 
                         System.out.println("\n [SUCESSO] Processo de atualização concluído!");
@@ -469,7 +473,7 @@ public class Admin extends Usuario
                     }
 
                     System.out.println();
-                    
+
                     if (removerclientes != null || removeradmin != null)
                     {
                         if (removerclientes != null)
@@ -480,9 +484,9 @@ public class Admin extends Usuario
                         {
                             loja.getAdm().remove(removeradmin);
                         }
-                        
+
                         loja.salvarDados();
-                        
+
                         System.out.println(" [SUCESSO] Utilizador removido com sucesso de forma definitiva!");
                     }
                     else
@@ -495,10 +499,10 @@ public class Admin extends Usuario
                     System.out.println("\n Logout com sucesso....");
                 }
             }
-            
+
             System.out.println("\n Pressione Enter para continuar...");
             leia.nextLine();
         }
         while (opcao != 0);
-        }
     }
+}
